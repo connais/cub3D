@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <math.h>
+#include <strings.h>
 
 typedef struct	s_data
 {
@@ -30,7 +31,7 @@ typedef struct s_vars {
 
 void	exit_game(t_vars *vars);
 int		close_cross(t_vars *vars);
-void	player(t_vars vars);
+int		player(void *vars);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		ftclose(int keycode, t_vars *vars);
 #endif

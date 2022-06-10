@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:11:41 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/10 17:43:30 by avaures          ###   ########.fr       */
+/*   Updated: 2022/06/10 19:28:29 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,13 @@ int	key_hook(int keycode, t_vars *vars)
 	
 	//printf("%d\n", keycode);
 	if (keycode == 119)
-		vars->py += 50;		
+		vars->py -= 5;		
 	if (keycode == 97)
-		
+		vars->px -= 5;
 	if (keycode == 115)
-	{
-		player(*vars);		
-	}
+		vars->py += 5;
 	if (keycode == 100)
-	{
-		player(*vars);		
-	}
+		vars->px += 5;
 	return (0);
 }
 
@@ -50,6 +46,7 @@ int	main(void)
 //	mlx_key_hook(vars.win, moove, &vars);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img, 0, 0);
-	player(vars);
+	//player(vars);
+	mlx_loop_hook(vars.mlx, player, (void *)&vars);
 	mlx_loop(vars.mlx);
 }
