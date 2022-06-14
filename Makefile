@@ -1,4 +1,4 @@
-SRC = main.c tools.c
+SRC =  main.c tools.c parsing.c GNL.c GNL_utils.c take_map.c
 
 CC = gcc
 
@@ -34,14 +34,18 @@ all :
 
 
 ${NAME} : $(OBJ)
-	${CC} -o ${NAME} ${OBJ} ${MLX_FLAGS}
+	@cd Libft && make --no-print-directory
+	${CC} -o ${NAME} ${OBJ} ${MLX_FLAGS} ./Libft/libft.a
 	@printf "${B_GREEN}==>{${NAME}} LINKED SUCCESFULLY<==${NONE}\n"
 
 clean :
+	@cd Libft && make clean --no-print-directory
 	@${RM} .build
 	@printf "${B_RED}XX{${NAME}} CLEANED SUCCESFULLY XX${NONE}\n"
+
 fclean :	clean
 	@${RM} ${NAME}
+	@cd Libft && make clean --no-print-directory
 	@printf "${B_RED}XX{${NAME}} FCLEAN SUCCESFULL XX${NONE}\n"
 	@make clean -C minilibx-linux --no-print-directory
 

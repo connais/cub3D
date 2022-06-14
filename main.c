@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:11:41 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/10 19:28:29 by avaures          ###   ########.fr       */
+/*   Updated: 2022/06/14 19:04:38 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,29 @@ int	key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
-int	main(void)
+int main(int argc, char **argv)
+
 {
 	t_vars	vars;
+    int     ret;
+	char 	**carte;	
 
+    if (argc != 2)
+        return (1);
+    ret = parsing(&vars, argv[1]);
+    if (ret == 0)
+	{
+    	print_map(&vars);
+	}
+	carte = save_map(vars.map);
+	int i = 0;
+	printf("\n");
+    while (carte[i])
+    {
+        printf("%s\n", carte[i]);
+        i++;
+    }
+	return (0);
 	vars.px = 400;
 	vars.py = 500;
 	vars.plen = 10;
