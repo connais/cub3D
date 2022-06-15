@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:44:09 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/14 16:44:12 by avaures          ###   ########.fr       */
+/*   Updated: 2022/06/15 12:21:45 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int print_map(t_vars *data)
 {
     int i = 0;
 
-    while (data->map[i])
+    while (data->filecub[i])
     {
-        printf("%s\n", data->map[i]);
+        printf("%s\n", data->filecub[i]);
         i++;
     }
     return (0);
@@ -82,10 +82,10 @@ int parsing(t_vars *data, char *file)
     free(buffer);
     close(fd);
     l_count = lines_counter(str);
-    data->map = (char **)malloc(sizeof(char *) * (l_count + 1));
-    if (!data->map)
+    data->filecub = (char **)malloc(sizeof(char *) * (l_count + 1));
+    if (!data->filecub)
         perror ("Malloc : ");
-    data->map = ft_split(str, '\n');
+    data->filecub = ft_split(str, '\n');
     return (0);
 }
 

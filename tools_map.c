@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_map.c                                         :+:      :+:    :+:   */
+/*   tools_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/14 16:51:57 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/15 16:42:47 by avaures          ###   ########.fr       */
+/*   Created: 2022/06/15 11:58:05 by avaures           #+#    #+#             */
+/*   Updated: 2022/06/15 17:19:14 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-char **save_map(char **foldcub)
+int line_map(char **foldcub)
 {
     int	i;
-	int	j;
 	int	line;
-	int colonne;
-	char **res;
+
 	line = 0;
 	i = 0;
-	j = 0;
 	while (foldcub[i])
 	{
 		if (foldcub[i][0] == '1' || foldcub[i][0] == ' ')
@@ -35,28 +32,36 @@ char **save_map(char **foldcub)
 		if(foldcub[i])
 			i++;
 	}
-	res = ft_calloc(sizeof(char *), line + 1);
-	if (!res)
-		return (NULL);
-	i = 0;
-	while (foldcub[i])
-	{
-		if (foldcub[i][0] == '1' || foldcub[i][0] == ' ')
-		{
-			colonne = 0;
-			while (foldcub[i][colonne])
-			{
-				colonne++;
-			}
-			res[j] = ft_calloc(sizeof(char), colonne + 1);
-			if(!res[j])
-				return (NULL);
-			j++;
-		}
-		i++;
-	}
+    return (line);
+}
+int **set_map(char **foldcub)
+{
+    int	i;
+	int	j;
+	int	line;
+	int colonne;
+	int **res;
+	line = 0;
 	i = 0;
 	j = 0;
+
+	while (foldcub[i])
+	{
+		if (foldcub[i][0] == '1' || foldcub[i][0] == ' ')
+		{
+			while(foldcub[i])
+			{
+				line++;
+				i++;
+			}
+		}
+		if(foldcub[i])
+			i++;
+	}
+	res = ft_calloc(sizeof(int *), line);
+	if (!res)
+		return ((int **)1);
+	i = 0;
 	while (foldcub[i])
 	{
 		if (foldcub[i][0] == '1' || foldcub[i][0] == ' ')
@@ -64,9 +69,12 @@ char **save_map(char **foldcub)
 			colonne = 0;
 			while (foldcub[i][colonne])
 			{
-				res[j][colonne] = foldcub[i][colonne];
 				colonne++;
 			}
+			res[j] = ft_calloc(sizeof(int), 1);
+			if(!res[j])
+				return ((int **)1);
+            res[j][0] = colonne;
 			j++;
 		}
 		i++;

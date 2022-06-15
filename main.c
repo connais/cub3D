@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:11:41 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/14 19:04:38 by avaures          ###   ########.fr       */
+/*   Updated: 2022/06/15 19:00:46 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,37 @@ int	key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
+// #define COLUMN_SIZE x
+// #define ROW_SIZE y
+// get_coord( int x, int y )
+// {
+// 	if ( x > ROW_SIZE )
+// 		return -1;
+// 	if ( y > COLUMN_SIZE )
+// 		return -1;
+// 	tab[ x + y * ROW_SIZE];
+// }
+
 int main(int argc, char **argv)
 
 {
 	t_vars	vars;
-    int     ret;
-	char 	**carte;	
 
     if (argc != 2)
         return (1);
-    ret = parsing(&vars, argv[1]);
-    if (ret == 0)
-	{
-    	print_map(&vars);
-	}
-	carte = save_map(vars.map);
-	int i = 0;
-	printf("\n");
-    while (carte[i])
-    {
-        printf("%s\n", carte[i]);
-        i++;
-    }
-	return (0);
+    if (parsing(&vars, argv[1]) != 0)
+		return (1);
+	vars.map = save_map(vars.filecub);
+	// int i;
+	// i = 0;
+	// while (vars.map[i])
+	// {
+	// 	printf("%s\n", vars.map[i]);
+	// 	i++;
+	// }
+	vars.setmap = set_map(vars.filecub);
+	vars.line_map = line_map(vars.filecub);
+	vars.final_tab = final_tab(&vars);
 	vars.px = 400;
 	vars.py = 500;
 	vars.plen = 10;
@@ -61,11 +69,11 @@ int main(int argc, char **argv)
 	mlx_hook(vars.win, 2, 1L << 0, ftclose, &vars);
 	mlx_hook(vars.win, 17, 1L << 17, close_cross, &vars);
 	mlx_key_hook(vars.win, key_hook, &vars);
-	vars.img.img = mlx_new_image(vars.mlx, 1920, 1080);
+	vars.img.img = mlx_new_image(vars.mlx, 10, 10);
 //	mlx_key_hook(vars.win, moove, &vars);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img, 0, 0);
-	//player(vars);
+//	draw_map(&vars);
 	mlx_loop_hook(vars.mlx, player, (void *)&vars);
 	mlx_loop(vars.mlx);
 }

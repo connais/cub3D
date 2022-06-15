@@ -29,9 +29,18 @@ typedef struct s_vars {
 	int		py;
 	int		plen;
 	t_data	img;
+	char	**filecub;
 	char	**map;
+	int		**setmap;
+	int		*final_tab;
+	int		size_tab;
+	int		line_map;
 }	t_vars;
 
+int *final_tab(t_vars *vars);
+int line_map(char **foldcub);
+int **set_map(char **foldcub);
+void    draw_map(t_vars *vars);
 char **save_map(char **foldcub);
 int print_map(t_vars *data);
 int wrong_file(char *file);
