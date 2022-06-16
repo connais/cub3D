@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:11:41 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/15 19:00:46 by avaures          ###   ########.fr       */
+/*   Updated: 2022/06/16 19:10:03 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	key_hook(int keycode, t_vars *vars)
 // }
 
 int main(int argc, char **argv)
-
 {
 	t_vars	vars;
 
@@ -72,7 +71,7 @@ int main(int argc, char **argv)
 	vars.img.img = mlx_new_image(vars.mlx, 10, 10);
 //	mlx_key_hook(vars.win, moove, &vars);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img, 0, 0);
+//	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img, 0, 0);
 //	draw_map(&vars);
 	mlx_loop_hook(vars.mlx, player, (void *)&vars);
 	mlx_loop(vars.mlx);

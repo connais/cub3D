@@ -13,6 +13,18 @@
 #include <strings.h>
 #include "./get_next_line.h"
 
+typedef struct	s_coords
+{
+	int x;
+	int x0;
+	int y;
+	int y0;
+	int i;
+	int z;
+	int	mapx;
+	int	mapy;
+}				t_coords;
+
 typedef struct	s_data
 {
 	void	*img;
