@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:27:31 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/15 19:00:57 by avaures          ###   ########.fr       */
+/*   Updated: 2022/06/17 12:29:38 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,30 @@ int *final_tab(t_vars *vars)
         j = -1;
         while (++j < vars->setmap[i][0])
         {
-            if (vars->map[i][j] == '1')
+            if (vars->map[i][j] == '1' || vars->map[i][j] == ' ')
                 res[k] = 1;            
             else if (vars->map[i][j] == '0')
                 res[k] = 0;
-            else if (vars->map[i][j] == ' ')
-                res[k] = 1;
             k++;
         }
     }
-    // k = 0;
-    // i = 0;
-    // j = 0;
-    // while (k < vars->size_tab)
-    // {
-    //     if (i < vars->setmap[j][0])
-    //     {
-    //         printf("%d", res[k]);
-    //         i++;
-    //         k++;
-    //     }
-    //     else
-    //     {
-    //         i = 0;
-    //         j++;
-    //         printf("\n");
-    //     }
-    // }
+    k = 0;
+    i = 0;
+    j = 0;
+    while (k < vars->size_tab)
+    {
+        if (i < vars->setmap[j][0])
+        {
+            printf("%d", res[k]);
+            i++;
+            k++;
+        }
+        else
+        {
+            i = 0;
+            j++;
+            printf("\n");
+        }
+    }
     return (res);
 }

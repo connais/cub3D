@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:11:41 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/16 19:10:03 by avaures          ###   ########.fr       */
+/*   Updated: 2022/06/17 13:02:29 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	key_hook(int keycode, t_vars *vars)
 	//keycode : 100 lettre D(droite)
 	
 	//printf("%d\n", keycode);
+	if (check_move(vars, keycode) == 1)
+		return (0);
 	if (keycode == 119)
 		vars->py -= 5;		
 	if (keycode == 97)

@@ -49,6 +49,7 @@ typedef struct s_vars {
 	int		line_map;
 }	t_vars;
 
+int	check_move(t_vars *vars, int keycode);
 int *final_tab(t_vars *vars);
 int line_map(char **foldcub);
 int **set_map(char **foldcub);

@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun 16 11:59:40 2022
+# Make data base, printed on Fri Jun 17 12:12:02 2022
 
 # Variables
 
@@ -57,7 +57,7 @@ _ = /usr/bin/code
 # makefile (from 'Makefile', line 15)
 CFLAGS = -Wall -Wextra -Werror
 # environment
-JOURNAL_STREAM = 9:5643122
+JOURNAL_STREAM = 9:5474169
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -77,15 +77,15 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/40289/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1282109
+MANAGERPID = 912924
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/40289/vscode-ipc-524c8ac0-274a-46f7-ad55-9d1f703b8548.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/40289/vscode-ipc-aea86e6c-c4a9-4910-af66-2c4e865ff0e5.sock
 # environment
 VSCODE_CWD = /mnt/nfs/homes/avaures/Documents/cub3D
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session21
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session18
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_40289_AFCy6n
+KRB5CCNAME = FILE:/tmp/krb5cc_40289_UE9WiG
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -95,7 +95,7 @@ GPG_AGENT_INFO = /run/user/40289/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/e2r8p4.clusters.42paris.fr:@/tmp/.ICE-unix/1282611,unix/e2r8p4.clusters.42paris.fr:/tmp/.ICE-unix/1282611
+SESSION_MANAGER = local/e2r11p6.clusters.42paris.fr:@/tmp/.ICE-unix/913389,unix/e2r11p6.clusters.42paris.fr:/tmp/.ICE-unix/913389
 # environment
 XDG_RUNTIME_DIR = /run/user/40289
 # environment
@@ -105,7 +105,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = d17553c0d8e24d48aac0c80c185dfd3c
+INVOCATION_ID = 12364a653195492f972e28dd93244cb6
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -119,7 +119,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/40289/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 1283247
+GIO_LAUNCHED_DESKTOP_FILE_PID = 913986
 # automatic
 %F = $(notdir $%)
 # environment
@@ -133,7 +133,7 @@ PWD = /mnt/nfs/homes/avaures/Documents/cub3D
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1282575
+SSH_AGENT_PID = 913269
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -267,28 +267,28 @@ TERMINATOR_DBUS_NAME = net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
 # environment
 DOCKER_HOST = unix:///run/user/40289/docker.sock
 # environment
-VSCODE_PID = 1284350
+VSCODE_PID = 916944
 # environment
-TERMINATOR_UUID = urn:uuid:69d16ae4-ace7-4465-be45-6dc699b28d27
+TERMINATOR_UUID = urn:uuid:f91b84e5-570c-4d30-b5e7-c67ec3a3dbd4
 # variable set hash-table stats:
 # Load=130/1024=13%, Rehash=0, Collisions=24/162=15%
 
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
- 
 
 # Directories
 
-# . (device 56, inode 308190370): 22 files, no impossibilities.
+# . (device 56, inode 308190370): 20 files, no impossibilities.
 
-# 22 files, no impossibilities in 1 directories.
+# 20 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 .build/%.o: %.c
 #  recipe to execute (from 'Makefile', line 27):
 	@$(CC) ${CFLAGS} -o $@ -c $?
+ 
 	@printf "${B_MAGENTA}Compilling $? ...\n${NONE}"
 
 # 1 implicit rules, 0 (0.0%) terminal.
@@ -439,12 +439,12 @@ clean:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 41 / storage = 434 B / avg = 10 B
-# current buf: size = 8162 B / used = 434 B / count = 41 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 40 / storage = 427 B / avg = 10 B
+# current buf: size = 8162 B / used = 427 B / count = 40 / avg = 10 B
 
-# strcache performance: lookups = 56 / hit rate = 26%
+# strcache performance: lookups = 54 / hit rate = 25%
 # hash-table stats:
-# Load=41/8192=1%, Rehash=0, Collisions=2/56=4%
-# Finished Make data base on Thu Jun 16 11:59:40 2022
+# Load=40/8192=0%, Rehash=0, Collisions=2/54=4%
+# Finished Make data base on Fri Jun 17 12:12:02 2022
 
  
