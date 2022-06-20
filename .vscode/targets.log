@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun 20 18:18:29 2022
+# Make data base, printed on Mon Jun 20 19:10:07 2022
 
 # Variables
 
@@ -15,7 +15,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 ?F = $(notdir $?)
 # environment
- 
 DESKTOP_SESSION = ubuntu
 # default
 .SHELLFLAGS := -c
@@ -56,7 +55,7 @@ _ = /usr/bin/code
 # makefile (from 'Makefile', line 15)
 CFLAGS = -Wall -Wextra -Werror
 # environment
-JOURNAL_STREAM = 9:179182
+JOURNAL_STREAM = 9:1559550
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -76,15 +75,15 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/40289/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 23893
+MANAGERPID = 128064
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/40289/vscode-ipc-96e43f02-a626-4510-b231-5ace8fc67e9b.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/40289/vscode-ipc-8eb2aca9-a69a-4e81-992e-da4a8d170b50.sock
 # environment
 VSCODE_CWD = /mnt/nfs/homes/avaures/Documents/cub3D
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session2
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_40289_TvRlo9
+KRB5CCNAME = FILE:/tmp/krb5cc_40289_OBoNda
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -94,7 +93,7 @@ GPG_AGENT_INFO = /run/user/40289/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/e3r8p14.clusters.42paris.fr:@/tmp/.ICE-unix/24360,unix/e3r8p14.clusters.42paris.fr:/tmp/.ICE-unix/24360
+SESSION_MANAGER = local/e2r12p20.42.fr:@/tmp/.ICE-unix/128530,unix/e2r12p20.42.fr:/tmp/.ICE-unix/128530
 # environment
 XDG_RUNTIME_DIR = /run/user/40289
 # environment
@@ -104,7 +103,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = a8108685bc6f46488afcdcb6420476ef
+INVOCATION_ID = fd54f5b9acd946eebc91f8ce29db2849
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -118,7 +117,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/40289/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 25822
+GIO_LAUNCHED_DESKTOP_FILE_PID = 129169
 # automatic
 %F = $(notdir $%)
 # environment
@@ -132,7 +131,7 @@ PWD = /mnt/nfs/homes/avaures/Documents/cub3D
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 24324
+SSH_AGENT_PID = 128491
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -146,7 +145,7 @@ B_CYAN = \033[1;36m
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/avaures/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/avaures/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
 LOGNAME = avaures
 # environment
@@ -192,7 +191,7 @@ LESS = -R
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /mnt/nfs/homes/avaures
+OLDPWD = /mnt/nfs/homes/avaures/Documents
 # environment
 TERMINATOR_DBUS_PATH = /net/tenshu/Terminator2
 # default
@@ -204,7 +203,7 @@ XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # makefile (from 'Makefile', line 19)
 NONE = \033[0m
 # environment
-VSCODE_IPC_HOOK = /run/user/40289/vscode-8f724af1-1.67.2-main.sock
+VSCODE_IPC_HOOK = /run/user/40289/vscode-8f724af1-1.68.1-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -264,9 +263,9 @@ TERMINATOR_DBUS_NAME = net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
 # environment
 DOCKER_HOST = unix:///run/user/40289/docker.sock
 # environment
-VSCODE_PID = 26018
+VSCODE_PID = 129983
 # environment
-TERMINATOR_UUID = urn:uuid:f9e0ae0b-7af3-4bfa-a223-6a035faa01ad
+TERMINATOR_UUID = urn:uuid:ce1c2ce7-d400-4881-98fe-e5a0cccdabb3
 # variable set hash-table stats:
 # Load=128/1024=12%, Rehash=0, Collisions=24/160=15%
 
@@ -276,8 +275,9 @@ TERMINATOR_UUID = urn:uuid:f9e0ae0b-7af3-4bfa-a223-6a035faa01ad
 
 # Directories
 
-# . (device 60, inode 308190370): 23 files, no impossibilities.
+# . (device 57, inode 308190370): 23 files, no impossibilities.
 
+ 
 # 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
@@ -294,7 +294,6 @@ TERMINATOR_UUID = urn:uuid:f9e0ae0b-7af3-4bfa-a223-6a035faa01ad
 # Not a target:
 .build/GNL_utils.o:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -448,6 +447,6 @@ clean:
 # strcache performance: lookups = 58 / hit rate = 25%
 # hash-table stats:
 # Load=43/8192=1%, Rehash=0, Collisions=2/58=3%
-# Finished Make data base on Mon Jun 20 18:18:29 2022
+# Finished Make data base on Mon Jun 20 19:10:07 2022
 
  

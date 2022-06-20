@@ -52,6 +52,8 @@ typedef struct s_vars {
     float	pa;
 }	t_vars;
 
+float make_b(t_vars vars);
+float make_m(t_vars vars);
 void    print_vector(t_vars *vars, int keycode);
 int	check_move(t_vars *vars, int keycode);
 int *final_tab(t_vars *vars);
