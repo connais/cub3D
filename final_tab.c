@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:27:31 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/17 12:29:38 by avaures          ###   ########.fr       */
+/*   Updated: 2022/06/20 15:38:41 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int *final_tab(t_vars *vars)
         vars->size_tab += vars->setmap[i][0];
         i++;
     }
-    res = malloc(sizeof(int) * vars->size_tab);
+    res = ft_calloc(sizeof(int), vars->size_tab);
     if (!res)
         return (NULL);
     i = -1;

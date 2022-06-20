@@ -37,8 +37,8 @@ typedef struct	s_data
 typedef struct s_vars {
 	void	*mlx;
 	void	*win;
-	int		px;
-	int		py;
+	float		px;
+	float		py;
 	int		plen;
 	t_data	img;
 	char	**filecub;
@@ -47,8 +47,12 @@ typedef struct s_vars {
 	int		*final_tab;
 	int		size_tab;
 	int		line_map;
+    float	pdx;
+    float	pdy;
+    float	pa;
 }	t_vars;
 
+void    print_vector(t_vars *vars, int keycode);
 int	check_move(t_vars *vars, int keycode);
 int *final_tab(t_vars *vars);
 int line_map(char **foldcub);
