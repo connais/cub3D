@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:31:25 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/20 21:53:36 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/12 17:33:14 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,12 @@ int		player(void *vars)
 	static int starty = -1;
 	static int startxl = -1;
 	static int startyl = -1;
-	int	i;
-	int	j;
-//	float ii;
-	int xl;
-	int yl;
-    i = 0;
+	float xl;
+	float yl;
+	
 	t_vars *v_cast = (t_vars *)vars;
-	//printf("x vaut %f et y vaut %f", v_cast->px, v_cast->py);
 	xl = (v_cast->px + 5) + v_cast->pdx *5;
 	yl = (v_cast->py + 5) + v_cast->pdy *5;
-	make_m(*v_cast);
-	make_b(*v_cast);
 	if ((startx != v_cast->px) || starty != v_cast->py || startxl != xl || startyl != yl)
 	{	
 		mlx_destroy_image(v_cast->mlx, v_cast->img.img);
@@ -53,16 +47,8 @@ int		player(void *vars)
 		v_cast->img.addr = mlx_get_data_addr(v_cast->img.img, \
 		&v_cast->img.bits_per_pixel, &v_cast->img.line_length, &v_cast->img.endian);
 		draw_map(v_cast);
-		i = -1;	
-		while(++i < v_cast->plen)
-		{
-			j = -1;
-			while (++j < v_cast->plen)
-				my_mlx_pixel_put(&v_cast->img, v_cast->px + i, v_cast->py + j, 0x00F1FF00);
-		}
-		i = -1;
-		while (++i < v_cast->plen)
-				my_mlx_pixel_put(&v_cast->img, xl - i, yl - i, 0x00F1FF00);
+		draw_player(v_cast);
+		bresenham(v_cast, v_cast->px + 5, v_cast->py +5, xl, yl);
 		mlx_put_image_to_window(v_cast->mlx, v_cast->win, v_cast->img.img, 0, 0);
 		startx = v_cast->px;
 		startxl = xl;

@@ -6,11 +6,33 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:27:31 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/20 15:38:41 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/12 18:34:40 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+/*
+NORD 2
+SUD 3
+EST 4
+WEST 5
+*/
+int data_is(char c)
+{
+    if (c == ' ' || c == '1')
+        return (1);
+    if (c == '0')
+        return (0);
+    if (c == 'N')
+        return (2);
+    if (c == 'S')
+        return(3);
+    if (c == 'E')
+        return (4);
+    if (c == 'W')
+        return (5);
+    return (-1);
+}
 
 int *final_tab(t_vars *vars)
 {
@@ -35,10 +57,7 @@ int *final_tab(t_vars *vars)
         j = -1;
         while (++j < vars->setmap[i][0])
         {
-            if (vars->map[i][j] == '1' || vars->map[i][j] == ' ')
-                res[k] = 1;            
-            else if (vars->map[i][j] == '0')
-                res[k] = 0;
+            res[k] = data_is(vars->map[i][j]);
             k++;
         }
     }

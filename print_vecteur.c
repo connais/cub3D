@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:51:04 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/20 21:47:37 by avaures          ###   ########.fr       */
+/*   Updated: 2022/06/21 16:03:39 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 float make_b(t_vars vars)
 {
 	float y;
-	float m;
+	float a;
 	float x;
 	float b;
-	m = (vars.pdy - vars.py + 5) / (vars.pdx - vars.px + 5);
+	a = (vars.pdy * 5) / (vars.pdx * 5);
 	x = vars.px + 5;
 	y = vars.py + 5;
-	b = y - (m * x);
+	b = y - (a * x);
 	return (b);
 	
 }
-float make_m(t_vars vars)
+float make_a(t_vars vars)
 {
-	float m;
-	m = (vars.pdy - vars.py + 5) / (vars.pdx - vars.px + 5);
-	return (m);
+	float a;
+	a = (vars.pdy * 5) / (vars.pdx * 5);
+	return (a);
 	
 }
 void    print_vector(t_vars *vars, int keycode)

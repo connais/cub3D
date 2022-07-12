@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 11:46:43 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/20 16:59:31 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/12 18:57:07 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	find_box(t_vars *vars, int x, int y)
 
 int	out_map(t_vars *vars, int x, int y, int keycode)
 {
-	printf("\nx vaut %d\n", x);
-	printf("y vaut %d\n", y);
+//	printf("\nx vaut %d\n", x);
+//	printf("y vaut %d\n", y);
 	if (y == 0 && keycode == 119)
 		return (1);
 	if (x == 0 && keycode == 97)
@@ -53,12 +53,12 @@ int	check_move(t_vars *vars, int keycode)
 	
 	if (keycode == 119)
 	{
-		printf("if%f\n", fmodf(vars->py, 50));
+	//	printf("if%f\n", fmodf(vars->py, 50));
 	//	printf("%f\n", vars->px / 50.0);
-		printf("x vaut %f et y vaut %f", vars->px, vars->py);
+	//	printf("x vaut %f et y vaut %f", vars->px, vars->py);
 		if (fmodf(vars->py, 50) == 0)
 		{
-			printf("x vaut %f et y vaut %f", vars->px / 50, vars->py / 50);
+	//		printf("x vaut %f et y vaut %f", vars->px / 50, vars->py / 50);
 			if (out_map(vars, vars->px / 50, vars->py / 50, keycode) == 1)
 				return (1);
 			if (find_box(vars, vars->px / 50, vars->py / 50 - 1) == 1)
@@ -77,7 +77,7 @@ int	check_move(t_vars *vars, int keycode)
 	}
 	if (keycode == 115)
 	{
-		printf("%f\n", fmodf(vars->py, 50));
+	//	printf("%f\n", fmodf(vars->py, 50));
 		if (fmodf(vars->py, 50.0) == 40)
 		{
 			printf("entrer%f\n", fmodf(vars->py, 50));

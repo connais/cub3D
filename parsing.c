@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:44:09 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/15 12:21:45 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/12 17:42:55 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,12 @@ int parsing(t_vars *data, char *file)
     char *str;
     int l_count;
 
+    buffer = NULL;
+    str = NULL;
     l_count = 0;
      if (check_ext(file) == 1)
         return(wrong_extension(file));
-    str = (char *)malloc(sizeof(char) * 1024);
+    str = ft_calloc(sizeof(char), 1024);
     fd = open(file, O_RDWR);
     if (fd < 1)
         return(wrong_file(file));
@@ -82,7 +84,7 @@ int parsing(t_vars *data, char *file)
     free(buffer);
     close(fd);
     l_count = lines_counter(str);
-    data->filecub = (char **)malloc(sizeof(char *) * (l_count + 1));
+    data->filecub = ft_calloc(sizeof(char *), (l_count + 1));
     if (!data->filecub)
         perror ("Malloc : ");
     data->filecub = ft_split(str, '\n');

@@ -6,12 +6,11 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:11:41 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/20 19:15:01 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/12 18:26:22 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-#define PI 3.1415926535
 
 int	key_hook(int keycode, t_vars *vars)
 {
@@ -73,7 +72,7 @@ int	key_hook(int keycode, t_vars *vars)
 int main(int argc, char **argv)
 {
 	t_vars	vars;
-
+//	ft_bzero(&vars, sizeof(t_vars));
     if (argc != 2)
         return (1);
     if (parsing(&vars, argv[1]) != 0)
@@ -89,17 +88,17 @@ int main(int argc, char **argv)
 	vars.setmap = set_map(vars.filecub);
 	vars.line_map = line_map(vars.filecub);
 	vars.final_tab = final_tab(&vars);
-	vars.px = 400;
-	vars.py = 500;
+	found_player(&vars);
 	vars.plen = 10;
 	vars.pa = 0;
 	vars.pdx = cosf(vars.pa) * 5;
 	vars.pdy = sinf(vars.pa) * 5;
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	mlx_hook(vars.win, 2, 1L << 0, ftclose, &vars);
+	mlx_hook(vars.win, 2, 1L << 0, keypress, &vars);
+//	mlx_hook(vars.win, 3, 1L << 1, keyrelease, &vars);
 	mlx_hook(vars.win, 17, 1L << 17, close_cross, &vars);
-	mlx_key_hook(vars.win, key_hook, &vars);
+//	mlx_key_hook(vars.win, key_hook, &vars);
 	vars.img.img = mlx_new_image(vars.mlx, 10, 10);
 //	mlx_key_hook(vars.win, moove, &vars);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);

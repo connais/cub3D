@@ -13,6 +13,8 @@
 #include <strings.h>
 #include "./get_next_line.h"
 
+#define PI 3.14159265359
+
 typedef struct	s_coords
 {
 	int x;
@@ -34,11 +36,23 @@ typedef struct	s_data
 	int	endian;
 }		t_data;
 
+typedef struct    t_infos
+{
+    int    slope_error;
+    int    slope_director;
+    int    dx;
+    int    dy;
+    int 	x_increment;
+    int    y_increment;
+}                s_infos;     
+
 typedef struct s_vars {
 	void	*mlx;
 	void	*win;
 	float		px;
 	float		py;
+	float		dx;
+	float		dy;
 	int		plen;
 	t_data	img;
 	char	**filecub;
@@ -52,8 +66,10 @@ typedef struct s_vars {
     float	pa;
 }	t_vars;
 
+int	found_player(t_vars *vars);
+void	draw_player(t_vars *v_carst);
 float make_b(t_vars vars);
-float make_m(t_vars vars);
+float make_a(t_vars vars);
 void    print_vector(t_vars *vars, int keycode);
 int	check_move(t_vars *vars, int keycode);
 int *final_tab(t_vars *vars);
@@ -74,4 +90,10 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		ftclose(int keycode, t_vars *vars);
 int		parsing(t_vars *data, char *file);
 char	*get_next_line(int fd);
+void    bresenham(t_vars *pack, int x1, int y1, int x2, int y2);
+int		find_box(t_vars *vars, int x, int y);
+int		out_map(t_vars *vars, int x, int y, int keycode);\
+int		keypress(int key, t_vars *vars);
+int		keyrelease(int key, t_vars *vars);
+
 #endif
