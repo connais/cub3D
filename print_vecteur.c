@@ -6,12 +6,11 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:51:04 by avaures           #+#    #+#             */
-/*   Updated: 2022/06/21 16:03:39 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/13 19:04:58 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-#define PI 3.1415926535
 
 float make_b(t_vars vars)
 {
@@ -44,7 +43,6 @@ void    print_vector(t_vars *vars, int keycode)
 	//printf("%d\n", keycode);
 	if (keycode == 65361)
 	{
-		printf("la");
 		vars->pa -= 0.1;
 		if (vars->pa < 0)
 			vars->pa += 2 * PI;

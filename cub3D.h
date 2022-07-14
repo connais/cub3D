@@ -14,6 +14,33 @@
 #include "./get_next_line.h"
 
 #define PI 3.14159265359
+#define WIDTH   1920
+#define HEIGHT  1080
+
+typedef struct  s_posi
+{
+    int x;
+    int y;
+}               t_posi;
+
+typedef struct  s_pos
+{
+    double x;
+    double y;
+}               t_pos;
+
+typedef struct	s_rc
+{
+    t_pos   pos;
+    t_pos   dir;
+    t_pos   plane;
+    t_pos   raydir;
+	t_pos	sidedist;
+	t_pos	deltadist;
+    t_posi	map;
+	t_posi	step;
+	double  camplanex;
+}               t_rc;
 
 typedef struct	s_coords
 {
@@ -64,6 +91,7 @@ typedef struct s_vars {
     float	pdx;
     float	pdy;
     float	pa;
+	t_rc	rc;
 }	t_vars;
 
 int	found_player(t_vars *vars);
@@ -75,6 +103,7 @@ int	check_move(t_vars *vars, int keycode);
 int *final_tab(t_vars *vars);
 int line_map(char **foldcub);
 int **set_map(char **foldcub);
+int	key_hook(int keycode, t_vars *vars);
 void    draw_map(t_vars *vars);
 char **save_map(char **foldcub);
 int print_map(t_vars *data);

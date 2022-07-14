@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul 12 16:56:20 2022
+# Make data base, printed on Thu Jul 14 16:28:47 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ OBJ = $(SRC:%.c=./.build/%.o)
 # environment
 XDG_SESSION_CLASS = user
 # makefile (from 'Makefile', line 1)
-SRC = main.c tools.c parsing.c GNL.c GNL_utils.c take_map.c tools_map.c draw_map.c final_tab.c print_vecteur.c bresenham.c movement.c
+SRC = main.c tools.c parsing.c GNL.c GNL_utils.c take_map.c tools_map.c draw_map.c final_tab.c print_vecteur.c bresenham.c movement.c trotate.c
 # environment
 XDG_SESSION_TYPE = x11
 # environment
@@ -55,7 +55,7 @@ _ = /usr/bin/code
 # makefile (from 'Makefile', line 16)
 CFLAGS = -Wall -Wextra -Werror
 # environment
-JOURNAL_STREAM = 9:1216177
+JOURNAL_STREAM = 9:1616283
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -75,15 +75,15 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/40289/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 259244
+MANAGERPID = 374322
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/40289/vscode-ipc-a8addeef-5d4f-4a47-99a3-6bfc1376799f.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/40289/vscode-ipc-cb5d869a-67af-46ac-98b9-f9af915d7ee2.sock
 # environment
 VSCODE_CWD = /mnt/nfs/homes/avaures/Documents/cub3D
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session2
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session11
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_40289_iQAEsM
+KRB5CCNAME = FILE:/tmp/krb5cc_40289_LdPsMH
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -93,7 +93,7 @@ GPG_AGENT_INFO = /run/user/40289/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/e2r9p5.clusters.42paris.fr:@/tmp/.ICE-unix/259660,unix/e2r9p5.clusters.42paris.fr:/tmp/.ICE-unix/259660
+SESSION_MANAGER = local/e2r8p5.clusters.42paris.fr:@/tmp/.ICE-unix/374838,unix/e2r8p5.clusters.42paris.fr:/tmp/.ICE-unix/374838
 # environment
 XDG_RUNTIME_DIR = /run/user/40289
 # environment
@@ -103,7 +103,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = e2b6ab67f8704ca080e5ca7715d852db
+INVOCATION_ID = eb344decb02e487691dda85fb1d985e6
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -117,7 +117,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/40289/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 260549
+GIO_LAUNCHED_DESKTOP_FILE_PID = 375443
 # automatic
 %F = $(notdir $%)
 # environment
@@ -131,7 +131,7 @@ PWD = /mnt/nfs/homes/avaures/Documents/cub3D
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 259616
+SSH_AGENT_PID = 374801
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -191,7 +191,7 @@ LESS = -R
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /mnt/nfs/homes/avaures
+OLDPWD = /mnt/nfs/homes/avaures/Documents
 # environment
 TERMINATOR_DBUS_PATH = /net/tenshu/Terminator2
 # default
@@ -263,9 +263,9 @@ TERMINATOR_DBUS_NAME = net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
 # environment
 DOCKER_HOST = unix:///run/user/40289/docker.sock
 # environment
-VSCODE_PID = 263125
+VSCODE_PID = 375977
 # environment
-TERMINATOR_UUID = urn:uuid:216f9a28-5587-48f4-b867-cd39cb8a02e7
+TERMINATOR_UUID = urn:uuid:8fd8f43e-8560-4a4e-878a-e3992fa38b67
 # variable set hash-table stats:
 # Load=128/1024=12%, Rehash=0, Collisions=24/160=15%
 
@@ -275,13 +275,14 @@ TERMINATOR_UUID = urn:uuid:216f9a28-5587-48f4-b867-cd39cb8a02e7
 
 # Directories
 
-# . (device 56, inode 308190370): 26 files, no impossibilities.
+# . (device 54, inode 308190370): 27 files, no impossibilities.
 
-# 26 files, no impossibilities in 1 directories.
+# 27 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 .build/%.o: %.c
+ 
 #  recipe to execute (from 'Makefile', line 28):
 	@$(CC) ${CFLAGS} -o $@ -c $?
 	@printf "${B_MAGENTA}Compilling $? ...\n${NONE}"
@@ -338,7 +339,7 @@ all:
 #  Modification time never checked.
 #  File has not been updated.
 
-cub3D: .build/main.o .build/tools.o .build/parsing.o .build/GNL.o .build/GNL_utils.o .build/take_map.o .build/tools_map.o .build/draw_map.o .build/final_tab.o .build/print_vecteur.o .build/bresenham.o .build/movement.o
+cub3D: .build/main.o .build/tools.o .build/parsing.o .build/GNL.o .build/GNL_utils.o .build/take_map.o .build/tools_map.o .build/draw_map.o .build/final_tab.o .build/print_vecteur.o .build/bresenham.o .build/movement.o .build/trotate.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -350,7 +351,6 @@ cub3D: .build/main.o .build/tools.o .build/parsing.o .build/GNL.o .build/GNL_uti
 # Not a target:
 .build/main.o:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -363,7 +363,7 @@ cub3D: .build/main.o .build/tools.o .build/parsing.o .build/GNL.o .build/GNL_uti
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-12 16:56:15.894929362
+#  Last modified 2022-07-14 16:28:18.096727192
 #  File has been updated.
 #  Successfully updated.
 
@@ -440,25 +440,31 @@ clean:
 #  File has not been updated.
 
 # Not a target:
+.build/trotate.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 .build/print_vecteur.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=20/1024=2%, Rehash=0, Collisions=0/47=0%
+# Load=21/1024=2%, Rehash=0, Collisions=0/49=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 48 / storage = 542 B / avg = 11 B
-# current buf: size = 8162 B / used = 542 B / count = 48 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 50 / storage = 569 B / avg = 11 B
+# current buf: size = 8162 B / used = 569 B / count = 50 / avg = 11 B
 
-# strcache performance: lookups = 63 / hit rate = 23%
+# strcache performance: lookups = 65 / hit rate = 23%
 # hash-table stats:
-# Load=48/8192=1%, Rehash=0, Collisions=2/63=3%
-# Finished Make data base on Tue Jul 12 16:56:20 2022
+# Load=50/8192=1%, Rehash=0, Collisions=2/65=3%
+# Finished Make data base on Thu Jul 14 16:28:47 2022
 
  

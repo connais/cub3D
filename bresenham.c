@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 17:13:14 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/12 17:13:16 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/13 16:42:21 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void    draw_line(t_vars *pack, s_infos *data, int x1, int y1, int x2, in
 {
    (void)x2;
     (void)y2;
-    while (/*out_map(pack, x1 / 50, y1 / 50) == 0 &&*/ find_box(pack, x1 / 50, y1 / 50) == 0)
+    while (/*out_map(pack, x1 / 50, y1 / 50) == 0 &&*/ find_box(pack, x1 / 50, y1 / 50) != 1)
     {
         if (x1 < 1920 && x1 > 0 && y1 < 1080 && y1 > 0)
             my_mlx_pixel_put(&pack->img, x1, y1, 0x0013DDA2);

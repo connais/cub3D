@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 11:46:43 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/12 18:57:07 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/14 19:52:14 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	draw_cube(t_vars *vars, t_coords *coord, int color)
 		tmpx = coord->x0;
 		while (tmpx < coord->x0 + 49)
 		{	
-			if (color)
+			if (color == 1)
 				my_mlx_pixel_put(&vars->img, tmpx, tmpy, 0x00FFFFFF);
 			else
 				my_mlx_pixel_put(&vars->img, tmpx, tmpy, 0x00000000);

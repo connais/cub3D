@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:27:31 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/12 18:34:40 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/14 18:47:59 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,19 @@ int *final_tab(t_vars *vars)
     {
         if (i < vars->setmap[j][0])
         {
+            
             printf("%d", res[k]);
             i++;
             k++;
         }
         else
         {
+    //        printf("%d : nb de chiffre\n", vars->setmap[j][0]);
             i = 0;
             j++;
             printf("\n");
         }
     }
+    //printf("%d : nb de chiffre\n", vars->setmap[j][0]);
     return (res);
 }

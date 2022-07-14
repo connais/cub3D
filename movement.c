@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 16:55:43 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/12 20:38:40 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/13 16:55:15 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int keypress(int key, t_vars *vars)
 		close_cross(vars);
 	if (key == 119)
 	{
-	 	// vars->px += vars->pdx;
-	 	// vars->py += vars->pdy;
+	 	 vars->px += vars->pdx;
+	 	 vars->py += vars->pdy;
 		vars->py -= 5;		
 	}
 	if (key == 97)
