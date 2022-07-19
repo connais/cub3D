@@ -6,129 +6,77 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:03:07 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/14 19:56:39 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/19 12:41:16 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int inttoint(t_vars *vars, int x, int y)
+void	reset_image(t_vars *vars)
 {
-		int	i;
-		int	res;
-		
-		i = -1;
-		res = 0;
-		while (++i < y - 1)
-			res += vars->setmap[i][0];
-		return (res + x - 1);
-}
-	
-void	drawline(int x, int y1, int y2, int color, t_vars *vars)
-{
-	int	y = y2;
-	(void)y1;
-	my_mlx_pixel_put(&vars->img, x, y, color);
-	// while (y < y1)
-	// {
-	// 		printf("%d is y\n %d is y1\n %d is color\n", y, y1, color);
-	// 	//printf("in\n");
-	// 	my_mlx_pixel_put(&vars->img, x, y, color);
-	// 	y++;
-	// }
-}
-int	keyk_hook(int keycode, t_vars *vars)
-{
-	//keycode : 119 lettre W(haut)
-	//keycode : 97 lettre A(gauche)
-	//keycode : 115 lettre S(bas)
-	//keycode : 100 lettre D(droite)
-	//keycode : 65361 fleche gauche
-	//keycode : 65363 fleche droite
-	//printf("%d\n", keycode);
-
-	if (keycode == 65361)
-    {
-      double oldDirX = vars->rc.dir.x;
-      vars->rc.dir.x = vars->rc.dir.x * cos(5) - vars->rc.dir.y * sin(5);
-      vars->rc.dir.y = oldDirX * sin(5) + vars->rc.dir.y * cos(5);
-      double oldPlaneX = vars->rc.plane.x;
-      vars->rc.plane.x = vars->rc.plane.x * cos(5) - vars->rc.plane.y * sin(5);
-      vars->rc.plane.y = oldPlaneX * sin(5) + vars->rc.plane.y * cos(5);
-    }
-	if (keycode == 65363)
-	{
-      double oldDirX = vars->rc.dir.x;
-      vars->rc.dir.x = vars->rc.dir.x * cos(-5) - vars->rc.dir.y * sin(-5);
-      vars->rc.dir.y = oldDirX * sin(-5) + vars->rc.dir.y * cos(-5);
-      double oldPlaneX = vars->rc.plane.x;
-      vars->rc.plane.x = vars->rc.plane.x * cos(-5) - vars->rc.plane.y * sin(-5);
-      vars->rc.plane.y = oldPlaneX * sin(-5) + vars->rc.plane.y * cos(-5);
-	}
-	if (keycode == 119)
-    {
-	  if(inttoint(vars, (int)(vars->rc.pos.x + vars->rc.dir.x * 5), (int)(vars->rc.pos.y)) == 0) 
-	  	vars->rc.pos.x += vars->rc.dir.x * 5;
-      if(inttoint(vars, (int)(vars->rc.pos.x), (int)(vars->rc.pos.y + vars->rc.dir.y * 5)) == 0)
-	  	vars->rc.pos.y += vars->rc.dir.y * 5;
-    }
-	if (keycode == 97)
-    {
-      if(inttoint(vars, (int)(vars->rc.pos.y + vars->rc.dir.y * 5), (int)(vars->rc.pos.x)) == 0) 
-	  	vars->rc.pos.y += vars->rc.dir.y * 5;
-      if(inttoint(vars, (int)(vars->rc.pos.y), (int)(vars->rc.pos.x + vars->rc.dir.x * 5)) == 0)
-	  	vars->rc.pos.x += vars->rc.dir.x * 5;
-    }
-	if (keycode == 115)
-    {
-      if(inttoint(vars, (int)(vars->rc.pos.x - vars->rc.dir.x * 5), (int)(vars->rc.pos.y)) == 0)
-	  	vars->rc.pos.x -= vars->rc.dir.x * 5;
-      if(inttoint(vars, (int)(vars->rc.pos.x), (int)(vars->rc.pos.y - vars->rc.dir.y * 5)) == 0)
-	  	vars->rc.pos.y -= vars->rc.dir.y * 5;
-    }
-	if (keycode == 100)
-    {
-      if(inttoint(vars, (int)(vars->rc.pos.y - vars->rc.dir.y * 5), (int)(vars->rc.pos.x)) == 0) 
-	  	vars->rc.pos.y -= vars->rc.dir.y * 5;
-      if(inttoint(vars, (int)(vars->rc.pos.y), (int)(vars->rc.pos.x - vars->rc.dir.x * 5)) == 0)
-	  	vars->rc.pos.x -= vars->rc.dir.x * 5;
-    }
-	return (0);
+	ft_bzero(vars->img.addr, HEIGHT * WIDTH * 4);
 }
 
+// Utiliser un get_dir au lieu de rotate
+void	apply_moves(t_vars *vars) 
+{
+	//printf("up = %d | left = %d | down = %d | right = %d\n", vars->up, vars->strafe_left, vars->down, vars->strafe_right);
+	if (vars->up)
+		move(vars, 0);
+	if (vars->strafe_left)
+		move(vars, 1);
+	if (vars->down)
+		move(vars, 2);
+	if (vars->strafe_right)
+		move(vars, 3);
+	if (vars->left)
+		rotate(&vars->rc.dir, -PI / 16);
+	if (vars->right)
+		rotate(&vars->rc.dir, PI / 16);
+}
+
+void	plane_calc(t_vars *vars)
+{
+	vars->rc.plane.x = vars->rc.dir.x;
+	vars->rc.plane.y = vars->rc.dir.y;
+	rotate(&vars->rc.plane, PI / 2);
+}
+
+void	update_rc_vars(t_vars *vars)
+{
+	apply_moves(vars);
+	plane_calc(vars);
+}
 
 int calculate(void *vars)
 {
 	t_vars *v_cast = (t_vars *)vars;
-	
-	v_cast->rc.pos.x = 22;
-    v_cast->rc.pos.y = 12;
-    v_cast->rc.dir.x = 0;
-    v_cast->rc.dir.y = -1;
-    v_cast->rc.plane.x = 0;//v_cast->rc.dir.x;
-    v_cast->rc.plane.y = 0.66;//v_cast->rc.dir.y;
-	
-	mlx_destroy_image(v_cast->mlx, v_cast->img.img);
-	v_cast->img.img = mlx_new_image(v_cast->mlx, 1920, 1080);
-	v_cast->img.addr = mlx_get_data_addr(v_cast->img.img, \
-	&v_cast->img.bits_per_pixel, &v_cast->img.line_length, &v_cast->img.endian);
-    // printf("ok\n");
+
+
+//	UPDATE VARS (chaque tour mlx_loop())
+
+	//printf("posx = %lf | posy = %lf | dirx = %lf | diry = %lf | planex = %lf | planey = %lf\n", v_cast->rc.pos.x, v_cast->rc.pos.y, v_cast->rc.dir.x, v_cast->rc.dir.y, v_cast->rc.plane.x, v_cast->rc.plane.y);
+	update_rc_vars(v_cast);
+	reset_image(vars);
+
+	////printf("\n retour fonction : %d\n", inttoint(v_cast, 11, 12));
+    // //printf("ok\n");
 		int x = -1;
-		while (x++ < WIDTH)
+		while (++x < WIDTH)
 		{
-			v_cast->rc.camplanex = 2 * x / (double)WIDTH - 1;
+			v_cast->rc.camplanex = 2.0 * (double)x / (double)WIDTH - 1.0;
 			v_cast->rc.raydir.x = v_cast->rc.dir.x + v_cast->rc.plane.x * v_cast->rc.camplanex;
 			v_cast->rc.raydir.y = v_cast->rc.dir.y + v_cast->rc.plane.y * v_cast->rc.camplanex;
 			v_cast->rc.map.x = (int)v_cast->rc.pos.x;
 			v_cast->rc.map.y = (int)v_cast->rc.pos.y;
-			if (v_cast->rc.raydir.x == 0) 
+			if (v_cast->rc.raydir.x <= 0.00001 && v_cast->rc.raydir.x >= -0.00001) 
 				v_cast->rc.deltadist.x = 1e30;
 			else
-				v_cast->rc.deltadist.x = fabs(1 / v_cast->rc.raydir.x);
-			if (v_cast->rc.raydir.y == 0)
+				v_cast->rc.deltadist.x = fabs(1.0 / v_cast->rc.raydir.x);
+			if (v_cast->rc.raydir.y <= 0.00001 && v_cast->rc.raydir.y >= -0.00001)
 				v_cast->rc.deltadist.y = 1e30;
 			else
-				v_cast->rc.deltadist.y = fabs(1 / v_cast->rc.raydir.y);
+				v_cast->rc.deltadist.y = fabs(1.0 / v_cast->rc.raydir.y);
 			double perpWallDist;
 			int hit = 0; //was there a wall hit?
 			int side; //was a NS or a EW wall hit?
@@ -154,7 +102,6 @@ int calculate(void *vars)
 				v_cast->rc.sidedist.y = (v_cast->rc.map.y + 1.0 - v_cast->rc.pos.y) * v_cast->rc.deltadist.y;
 			}
 			
-
 			while (hit == 0)
 			{
 				//jump to next map square, either in x-direction, or in y-direction
@@ -171,29 +118,32 @@ int calculate(void *vars)
 					side = 1;
 				}
 				//Check if ray has hit a wall
-				if (inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y) > 0) 
+				if (v_cast->final_tab[inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y)] > 0) 
 					hit = 1;
 			}
-			// printf("\nok\n");
+			// //printf("\nok\n");
 
 			if(side == 0) 
 				perpWallDist = (v_cast->rc.sidedist.x - v_cast->rc.deltadist.x);
 			else
 				perpWallDist = (v_cast->rc.sidedist.y - v_cast->rc.deltadist.y);
-			
-			int lineHeight = (HEIGHT / perpWallDist);
-			int drawStart = -lineHeight / 2 + HEIGHT / 2;
-			int drawEnd = lineHeight / 2 + HEIGHT / 2;
-		//	printf("drawstart : %d\ndrawend : %d\n", drawStart, drawEnd);
-			if(drawStart < 0)
-				drawStart = 0;
-			if(drawEnd >= HEIGHT)
-				drawEnd = HEIGHT - 1;
+			//printf("perpwalldist = %lf\n", perpWallDist);
+			////printf("perpwalldist : %f\n", perpWallDist);
+			int lineHeight = (int)(HEIGHT / perpWallDist);
+			//printf("lineheight : %d\n", lineHeight);
+			v_cast->drawStart = -lineHeight / 2 + HEIGHT / 2;
+			v_cast->drawEnd = lineHeight / 2 + HEIGHT / 2;
+			////printf("lineheight : %d\nHEIGHT : %d\n", lineHeight, HEIGHT);
+			//printf("drawstart : %d\ndrawend : %d\n", v_cast->drawStart, v_cast->drawEnd);
+			if(v_cast->drawStart < 0)
+				v_cast->drawStart = 0;
+			if(v_cast->drawEnd >= HEIGHT)
+				v_cast->drawEnd = HEIGHT - 1;
 			
 			int color;
 			if (inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y) == 1)
 			{
-	//			printf("enter\n");
+	//			//printf("enter\n");
 				color = 0x00FF0000; //red
 			}
 			else if (inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y) == 2)  
@@ -206,13 +156,30 @@ int calculate(void *vars)
 				color = 0x0000FFFF; //yellow
 			if (side == 1) 
 				color = color / 2;
-		//	printf("\n%d\n", x);
-			drawline(x, drawStart, drawEnd, color, v_cast);
-//			printf("ici\n");
+		//	//printf("\n%d\n", x);
+			drawline(x, v_cast->drawStart, v_cast->drawEnd, v_cast);
+//			//printf("ici\n");
     	}
+		mlx_put_image_to_window(v_cast->mlx, v_cast->win, v_cast->img.img, 0, 0);
   return (0);
 }
 
+
+void	init_vars(t_vars *vars)
+{
+	vars->rc.pos.x = 6.5;
+    vars->rc.pos.y = 2.5;
+    vars->rc.dir.x = -1;
+    vars->rc.dir.y = 0;
+    vars->rc.plane.x = vars->rc.dir.x;
+    vars->rc.plane.y = vars->rc.dir.y;
+	vars->up = 0;
+	vars->left = 0;
+	vars->down = 0;
+	vars->right = 0;
+	vars->strafe_left = 0;
+	vars->strafe_right = 0;
+}
 
 int main(int argc, char **argv)
 {
@@ -222,6 +189,7 @@ int main(int argc, char **argv)
         return (1);
     if (parsing(&vars, argv[1]) != 0)
 		return (1);
+	init_vars(&vars);
 	vars.map = save_map(vars.filecub);
 	vars.setmap = set_map(vars.filecub);
 	vars.line_map = line_map(vars.filecub);
@@ -229,37 +197,12 @@ int main(int argc, char **argv)
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
 	mlx_hook(vars.win, 2, 1L << 0, keypress, &vars);
+	mlx_hook(vars.win, 3, 1L<<1, keyrelease, &vars);
 	mlx_hook(vars.win, 17, 1L << 17, close_cross, &vars);
-	mlx_key_hook(vars.win, keyk_hook, &vars);
-	vars.img.img = mlx_new_image(vars.mlx, 10, 10);
+//	mlx_key_hook(vars.win, keyk_hook, &vars);
+	vars.img.img = mlx_new_image(vars.mlx, 1920, 1080);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
 	mlx_loop_hook(vars.mlx, calculate, (void *)&vars);
 	mlx_loop(vars.mlx);
 }
 
-void    rotate(t_pos *plane, double angle)
-{
-    double  tmpx;
-    double  tmpy;
-    
-    tmpx = plane->x;
-    tmpy = plane->y;
-    plane->x = tmpx * cos(angle) - tmpy * sin(angle);
-    plane->y = tmpx * cos(angle) + tmpy * sin(angle);
-}
-
-// int main()
-// {
-
-//     t_rc   rc;
-    
-//     rc.pos.x = 2;
-//     rc.pos.y = 2;
-//     rc.dir.x = 0;
-//     rc.dir.y = -1;
-//     rc.plane.x = rc.dir.x;
-//     rc.plane.y = rc.dir.y;
-    
-//     rotate(&rc.plane, PI / 2);
-//     return (0);
-// }

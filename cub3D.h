@@ -13,9 +13,12 @@
 #include <strings.h>
 #include "./get_next_line.h"
 
-#define PI 3.14159265359
+#define PI		3.14159265359
 #define WIDTH   1920
 #define HEIGHT  1080
+#define STEP	0.15
+#define CEILINGCOLOR	0x2020A9
+#define	FLOORCOLOR		0x20A920
 
 typedef struct  s_posi
 {
@@ -92,7 +95,15 @@ typedef struct s_vars {
     float	pdy;
     float	pa;
 	t_rc	rc;
-}	t_vars;
+	int		up;
+	int		strafe_left;
+	int		down;
+	int		strafe_right;
+	int		left;
+	int		right;
+	int		drawStart;
+	int		drawEnd; 
+}		t_vars;
 
 int	found_player(t_vars *vars);
 void	draw_player(t_vars *v_carst);
@@ -124,5 +135,14 @@ int		find_box(t_vars *vars, int x, int y);
 int		out_map(t_vars *vars, int x, int y, int keycode);\
 int		keypress(int key, t_vars *vars);
 int		keyrelease(int key, t_vars *vars);
+void	drawceiling(int x, int start, int end, t_vars *vars);
+void	draw_wall(int x, int start, int end, t_vars *vars);
+void	drawfloor(int x, int start, int end, t_vars *vars);
+void	drawline(int x, int y1, int y2, t_vars *vars);
+int 	inttoint(t_vars *vars, int x, int y);
+t_pos	*rotate(t_pos *dir, double angle);
+void	translate(t_pos *pos, t_pos *dir);
+int		is_valid_move(t_vars *vars, t_pos dir, t_pos pos);
+void	move(t_vars *vars, int move);
 
 #endif

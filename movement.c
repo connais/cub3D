@@ -6,19 +6,11 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 16:55:43 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/13 16:55:15 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/19 12:13:16 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-//int rotate()
-/*
-int translate(t_vars *vars)
-{
-    
-}
-*/
 
 int    found_player(t_vars *vars)
 {
@@ -69,6 +61,44 @@ void draw_player(t_vars *v_cast)
 			my_mlx_pixel_put(&v_cast->img, v_cast->px + i, v_cast->py + j, 0x00F1FF00);
 	}
 }
+
+int keypress(int key, t_vars *vars)
+{
+	if (key == 65307)
+		close_cross(vars);
+	if (key == 119)
+		vars->up = 1;
+	if (key == 97)
+		vars->strafe_left = 1;
+	if (key == 115)
+		vars->down = 1;
+	if (key == 100)
+		vars->strafe_right = 1;
+	if (key == 65361)
+		vars->left = 1;
+	if (key == 65363)
+		vars->right = 1;
+	return (0);
+}
+
+int keyrelease(int key, t_vars *vars)
+{
+	if (key == 119)
+		vars->up = 0;
+	if (key == 97)
+		vars->strafe_left = 0;
+	if (key == 115)
+		vars->down = 0;
+	if (key == 100)
+		vars->strafe_right = 0;
+	if (key == 65361)
+		vars->left = 0;
+	if (key == 65363)
+		vars->right = 0;
+	return (0);
+}
+
+/*
 int keypress(int key, t_vars *vars)
 {
 	if (key == 65307)
@@ -102,4 +132,4 @@ int keypress(int key, t_vars *vars)
 		vars->pdy = sinf(vars->pa) * 5;
 	}
 	return (0);
-}
+}*/
