@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Tue Jul 19 12:40:24 2022
+# Make data base, printed on Tue Jul 19 13:04:07 2022
 
 # Variables
 
@@ -16,7 +17,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 ?F = $(notdir $?)
 # environment
 DESKTOP_SESSION = ubuntu
- 
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 8)
@@ -24,7 +24,7 @@ OBJ = $(SRC:%.c=./.build/%.o)
 # environment
 XDG_SESSION_CLASS = user
 # makefile (from 'Makefile', line 1)
-SRC = main.c tools.c parsing.c GNL.c GNL_utils.c take_map.c tools_map.c draw_map.c final_tab.c print_vecteur.c bresenham.c movement.c trotate.c draw_img.c move_player.c
+SRC = main.c tools.c parsing.c GNL.c GNL_utils.c take_map.c tools_map.c draw_map.c final_tab.c print_vecteur.c bresenham.c movement.c trotate.c draw_img.c move_player.c more_move_player.c
 # environment
 XDG_SESSION_TYPE = x11
 # environment
@@ -276,9 +276,9 @@ TERMINATOR_UUID = urn:uuid:51385ae0-9249-4261-8b2b-3dfa3c8d1d1a
 
 # Directories
 
-# . (device 58, inode 308190370): 31 files, no impossibilities.
+# . (device 58, inode 308190370): 32 files, no impossibilities.
 
-# 31 files, no impossibilities in 1 directories.
+# 32 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -287,6 +287,7 @@ TERMINATOR_UUID = urn:uuid:51385ae0-9249-4261-8b2b-3dfa3c8d1d1a
 	@$(CC) ${CFLAGS} -o $@ -c $?
 	@printf "${B_MAGENTA}Compilling $? ...\n${NONE}"
 
+ 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
@@ -300,7 +301,6 @@ TERMINATOR_UUID = urn:uuid:51385ae0-9249-4261-8b2b-3dfa3c8d1d1a
 all:
 #  Command line target.
 #  Implicit rule search has not been done.
- 
 #  Implicit/static pattern stem: ''
 #  File does not exist.
 #  File has been updated.
@@ -341,6 +341,12 @@ all:
 #  File has not been updated.
 
 # Not a target:
+.build/more_move_player.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 .build/move_player.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -352,7 +358,7 @@ all:
 #  Modification time never checked.
 #  File has not been updated.
 
-cub3D: .build/main.o .build/tools.o .build/parsing.o .build/GNL.o .build/GNL_utils.o .build/take_map.o .build/tools_map.o .build/draw_map.o .build/final_tab.o .build/print_vecteur.o .build/bresenham.o .build/movement.o .build/trotate.o .build/draw_img.o .build/move_player.o
+cub3D: .build/main.o .build/tools.o .build/parsing.o .build/GNL.o .build/GNL_utils.o .build/take_map.o .build/tools_map.o .build/draw_map.o .build/final_tab.o .build/print_vecteur.o .build/bresenham.o .build/movement.o .build/trotate.o .build/draw_img.o .build/move_player.o .build/more_move_player.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -376,7 +382,7 @@ cub3D: .build/main.o .build/tools.o .build/parsing.o .build/GNL.o .build/GNL_uti
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-19 12:39:55.309009328
+#  Last modified 2022-07-19 13:04:06.158553553
 #  File has been updated.
 #  Successfully updated.
 
@@ -465,19 +471,19 @@ clean:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=23/1024=2%, Rehash=0, Collisions=0/53=0%
+# Load=24/1024=2%, Rehash=0, Collisions=0/55=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 56 / storage = 655 B / avg = 11 B
-# current buf: size = 8162 B / used = 655 B / count = 56 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 58 / storage = 700 B / avg = 12 B
+# current buf: size = 8162 B / used = 700 B / count = 58 / avg = 12 B
 
-# strcache performance: lookups = 71 / hit rate = 21%
+# strcache performance: lookups = 73 / hit rate = 20%
 # hash-table stats:
-# Load=56/8192=1%, Rehash=0, Collisions=3/71=4%
-# Finished Make data base on Tue Jul 19 12:40:24 2022
+# Load=58/8192=1%, Rehash=0, Collisions=3/73=4%
+# Finished Make data base on Tue Jul 19 13:04:07 2022
 
  

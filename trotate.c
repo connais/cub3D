@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:03:07 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/19 12:41:16 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/19 19:55:15 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,6 @@
 void	reset_image(t_vars *vars)
 {
 	ft_bzero(vars->img.addr, HEIGHT * WIDTH * 4);
-}
-
-// Utiliser un get_dir au lieu de rotate
-void	apply_moves(t_vars *vars) 
-{
-	//printf("up = %d | left = %d | down = %d | right = %d\n", vars->up, vars->strafe_left, vars->down, vars->strafe_right);
-	if (vars->up)
-		move(vars, 0);
-	if (vars->strafe_left)
-		move(vars, 1);
-	if (vars->down)
-		move(vars, 2);
-	if (vars->strafe_right)
-		move(vars, 3);
-	if (vars->left)
-		rotate(&vars->rc.dir, -PI / 16);
-	if (vars->right)
-		rotate(&vars->rc.dir, PI / 16);
-}
-
-void	plane_calc(t_vars *vars)
-{
-	vars->rc.plane.x = vars->rc.dir.x;
-	vars->rc.plane.y = vars->rc.dir.y;
-	rotate(&vars->rc.plane, PI / 2);
-}
-
-void	update_rc_vars(t_vars *vars)
-{
-	apply_moves(vars);
-	plane_calc(vars);
 }
 
 int calculate(void *vars)
@@ -78,8 +47,7 @@ int calculate(void *vars)
 			else
 				v_cast->rc.deltadist.y = fabs(1.0 / v_cast->rc.raydir.y);
 			double perpWallDist;
-			int hit = 0; //was there a wall hit?
-			int side; //was a NS or a EW wall hit?
+			v_cast->hit = 0; //was there a wall hit?
 
 			if (v_cast->rc.raydir.x < 0)
 			{
@@ -102,28 +70,28 @@ int calculate(void *vars)
 				v_cast->rc.sidedist.y = (v_cast->rc.map.y + 1.0 - v_cast->rc.pos.y) * v_cast->rc.deltadist.y;
 			}
 			
-			while (hit == 0)
+			while (v_cast->hit == 0)
 			{
 				//jump to next map square, either in x-direction, or in y-direction
 				if (v_cast->rc.sidedist.x < v_cast->rc.sidedist.y)
 				{
 					v_cast->rc.sidedist.x += v_cast->rc.deltadist.x;
 					v_cast->rc.map.x += v_cast->rc.step.x;
-					side = 0;
+					v_cast->side = 0;
 				}
 				else
 				{
 					v_cast->rc.sidedist.y += v_cast->rc.deltadist.y;
 					v_cast->rc.map.y += v_cast->rc.step.y;
-					side = 1;
+					v_cast->side = 1;
 				}
-				//Check if ray has hit a wall
+				//Check if ray has v_cast->hit a wall
 				if (v_cast->final_tab[inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y)] > 0) 
-					hit = 1;
+					v_cast->hit = 1;
 			}
 			// //printf("\nok\n");
 
-			if(side == 0) 
+			if(v_cast->side == 0) 
 				perpWallDist = (v_cast->rc.sidedist.x - v_cast->rc.deltadist.x);
 			else
 				perpWallDist = (v_cast->rc.sidedist.y - v_cast->rc.deltadist.y);
@@ -139,7 +107,20 @@ int calculate(void *vars)
 				v_cast->drawStart = 0;
 			if(v_cast->drawEnd >= HEIGHT)
 				v_cast->drawEnd = HEIGHT - 1;
-			
+			//int texNum = v_cast->final_tab[inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y)] - 1; //1 subtracted from it so that texture 0 can be used!
+
+			//calculate value of wallX
+			// double wallX; //where exactly the wall was hit
+			// if (v_cast->side == 0) 
+			// 	wallX = v_cast->rc.pos.y + perpWallDist * v_cast->rc.raydir.y;
+			// else
+			// 	wallX = v_cast->rc.pos.x + perpWallDist * v_cast->rc.raydir.x;
+			// wallX -= floor((wallX));
+
+			// //x coordinate on the texture
+			// int texX = (int)(wallX * (double)(texWidth));
+			// if(v_cast->side == 0 && v_cast->rc.raydir.x > 0) texX = texWidth - texX - 1;
+			// if(v_cast->side == 1 && v_cast->rc.raydir.y < 0) texX = texWidth - texX - 1;
 			int color;
 			if (inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y) == 1)
 			{
@@ -154,7 +135,7 @@ int calculate(void *vars)
 				color = 0x00FFFFFF; //white
 			else 
 				color = 0x0000FFFF; //yellow
-			if (side == 1) 
+			if (v_cast->side == 1) 
 				color = color / 2;
 		//	//printf("\n%d\n", x);
 			drawline(x, v_cast->drawStart, v_cast->drawEnd, v_cast);
@@ -162,23 +143,6 @@ int calculate(void *vars)
     	}
 		mlx_put_image_to_window(v_cast->mlx, v_cast->win, v_cast->img.img, 0, 0);
   return (0);
-}
-
-
-void	init_vars(t_vars *vars)
-{
-	vars->rc.pos.x = 6.5;
-    vars->rc.pos.y = 2.5;
-    vars->rc.dir.x = -1;
-    vars->rc.dir.y = 0;
-    vars->rc.plane.x = vars->rc.dir.x;
-    vars->rc.plane.y = vars->rc.dir.y;
-	vars->up = 0;
-	vars->left = 0;
-	vars->down = 0;
-	vars->right = 0;
-	vars->strafe_left = 0;
-	vars->strafe_right = 0;
 }
 
 int main(int argc, char **argv)
@@ -196,6 +160,7 @@ int main(int argc, char **argv)
 	vars.final_tab = final_tab(&vars);
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
+//	mlx_xpm_file_to_image(vars.mlx, "./img_texture/lave.xpm", &vars.width, &vars.height);
 	mlx_hook(vars.win, 2, 1L << 0, keypress, &vars);
 	mlx_hook(vars.win, 3, 1L<<1, keyrelease, &vars);
 	mlx_hook(vars.win, 17, 1L << 17, close_cross, &vars);

@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 12:37:51 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/19 12:38:22 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/19 16:05:43 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		is_valid_move(t_vars *vars, t_pos dir, t_pos pos)
 {
 	translate(&pos, &dir);
 	//printf(" %d\n", vars->final_tab[inttoint(vars, pos.x, pos.y)]);
-	if (vars->final_tab[inttoint(vars, (int)(pos.x + dir.x * 0.5), (int)(pos.y + dir.y * 0.5))] == 0)
+	if (vars->final_tab[inttoint(vars, (int)(pos.x + dir.x * 0.1), (int)(pos.y + dir.y * 0.1))] == 0)
 	{
 		return (1);
 	}

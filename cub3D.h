@@ -102,7 +102,11 @@ typedef struct s_vars {
 	int		left;
 	int		right;
 	int		drawStart;
-	int		drawEnd; 
+	int		drawEnd;
+	int		width;
+	int		height;
+	int hit;
+	int side;
 }		t_vars;
 
 int	found_player(t_vars *vars);
@@ -144,5 +148,9 @@ t_pos	*rotate(t_pos *dir, double angle);
 void	translate(t_pos *pos, t_pos *dir);
 int		is_valid_move(t_vars *vars, t_pos dir, t_pos pos);
 void	move(t_vars *vars, int move);
+void	init_vars(t_vars *vars);
+void	apply_moves(t_vars *vars);
+void	plane_calc(t_vars *vars);
+void	update_rc_vars(t_vars *vars);
 
 #endif
