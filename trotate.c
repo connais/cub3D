@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:03:07 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/20 17:14:21 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/20 17:29:48 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	calc_side(t_vars *v_cast)
 		v_cast->rc.sidedist.y = (v_cast->rc.map.y + 1.0 - v_cast->rc.pos.y) * v_cast->rc.deltadist.y;
 	}			
 }
+
 void	found_hit(t_vars *v_cast)
 {
 	while (v_cast->hit == 0)
@@ -64,75 +65,37 @@ void	found_hit(t_vars *v_cast)
 			v_cast->hit = 1;
 	}
 }
+
 int calculate(void *vars)
 {
 	t_vars *v_cast = (t_vars *)vars;
+	int x;
 
-
-
-//	UPDATE VARS (chaque tour mlx_loop())
-
-	//printf("posx = %lf | posy = %lf | dirx = %lf | diry = %lf | planex = %lf | planey = %lf\n", v_cast->rc.pos.x, v_cast->rc.pos.y, v_cast->rc.dir.x, v_cast->rc.dir.y, v_cast->rc.plane.x, v_cast->rc.plane.y);
+	x = -1;
 	update_rc_vars(v_cast);
 	reset_image(vars);
-
-	////printf("\n retour fonction : %d\n", inttoint(v_cast, 11, 12));
-    // //printf("ok\n");
-		int x = -1;
-		while (++x < WIDTH)
-		{
-			v_cast->rc.camplanex = 2.0 * (double)x / (double)WIDTH - 1.0;
-			v_cast->rc.raydir.x = v_cast->rc.dir.x + v_cast->rc.plane.x * v_cast->rc.camplanex;
-			v_cast->rc.raydir.y = v_cast->rc.dir.y + v_cast->rc.plane.y * v_cast->rc.camplanex;
-			v_cast->rc.map.x = (int)v_cast->rc.pos.x;
-			v_cast->rc.map.y = (int)v_cast->rc.pos.y;
-			if (v_cast->rc.raydir.x <= 0.00001 && v_cast->rc.raydir.x >= -0.00001) 
-				v_cast->rc.deltadist.x = 1e30;
-			else
-				v_cast->rc.deltadist.x = fabs(1.0 / v_cast->rc.raydir.x);
-			if (v_cast->rc.raydir.y <= 0.00001 && v_cast->rc.raydir.y >= -0.00001)
-				v_cast->rc.deltadist.y = 1e30;
-			else
-				v_cast->rc.deltadist.y = fabs(1.0 / v_cast->rc.raydir.y);
-			double perpWallDist;
-			calc_side(v_cast);
-			found_hit(v_cast);
-			// //printf("\nok\n");
-
-			if(v_cast->side == 0) 
-				perpWallDist = (v_cast->rc.sidedist.x - v_cast->rc.deltadist.x);
-			else
-				perpWallDist = (v_cast->rc.sidedist.y - v_cast->rc.deltadist.y);
-			//printf("perpwalldist = %lf\n", perpWallDist);
-			////printf("perpwalldist : %f\n", perpWallDist);
-			int lineHeight = (int)(HEIGHT / perpWallDist);
-			//printf("lineheight : %d\n", lineHeight);
-			v_cast->drawStart = -lineHeight / 2 + HEIGHT / 2;
-			v_cast->drawEnd = lineHeight / 2 + HEIGHT / 2;
-			////printf("lineheight : %d\nHEIGHT : %d\n", lineHeight, HEIGHT);
-			//printf("drawstart : %d\ndrawend : %d\n", v_cast->drawStart, v_cast->drawEnd);
-			if(v_cast->drawStart < 0)
-				v_cast->drawStart = 0;
-			if(v_cast->drawEnd >= HEIGHT)
-				v_cast->drawEnd = HEIGHT - 1;
-			//int texNum = v_cast->final_tab[inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y)] - 1; //1 subtracted from it so that texture 0 can be used!
-
-			//calculate value of wallX
-			// double wallX; //where exactly the wall was hit
-			// if (v_cast->side == 0) 
-			// 	wallX = v_cast->rc.pos.y + perpWallDist * v_cast->rc.raydir.y;
-			// else
-			// 	wallX = v_cast->rc.pos.x + perpWallDist * v_cast->rc.raydir.x;
-			// wallX -= floor((wallX));
-
-			// //x coordinate on the texture
-			// int texX = (int)(wallX * (double)(texWidth));
-			// if(v_cast->side == 0 && v_cast->rc.raydir.x > 0) texX = texWidth - texX - 1;
-			// if(v_cast->side == 1 && v_cast->rc.raydir.y < 0) texX = texWidth - texX - 1;
-			drawline(x, v_cast->drawStart, v_cast->drawEnd, v_cast);
+	while (++x < WIDTH)
+	{
+		start_calc(v_cast, x);	
+		calc_dist(v_cast);
+		double perpWallDist;
+		calc_side(v_cast);
+		found_hit(v_cast);
+		if(v_cast->side == 0) 
+			perpWallDist = (v_cast->rc.sidedist.x - v_cast->rc.deltadist.x);
+		else
+		perpWallDist = (v_cast->rc.sidedist.y - v_cast->rc.deltadist.y);
+		int lineHeight = (int)(HEIGHT / perpWallDist);
+		v_cast->drawStart = -lineHeight / 2 + HEIGHT / 2;
+		v_cast->drawEnd = lineHeight / 2 + HEIGHT / 2;
+		if(v_cast->drawStart < 0)
+			v_cast->drawStart = 0;
+		if(v_cast->drawEnd >= HEIGHT)
+			v_cast->drawEnd = HEIGHT - 1;
+		drawline(x, v_cast->drawStart, v_cast->drawEnd, v_cast);
     	}
-		mlx_put_image_to_window(v_cast->mlx, v_cast->win, v_cast->img.img, 0, 0);
-  return (0);
+	mlx_put_image_to_window(v_cast->mlx, v_cast->win, v_cast->img.img, 0, 0);
+	return (0);
 }
 
 int main(int argc, char **argv)

@@ -1,5 +1,5 @@
 SRC =  main.c tools.c parsing.c GNL.c GNL_utils.c take_map.c tools_map.c draw_map.c final_tab.c print_vecteur.c \
-bresenham.c movement.c trotate.c draw_img.c move_player.c more_move_player.c
+bresenham.c movement.c trotate.c draw_img.c move_player.c more_move_player.c tools_calculate.c
 
 CC = gcc
 
