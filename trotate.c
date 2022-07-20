@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:03:07 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/19 19:55:15 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/20 17:08:46 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,36 @@ void	reset_image(t_vars *vars)
 {
 	ft_bzero(vars->img.addr, HEIGHT * WIDTH * 4);
 }
+void	calc_side(t_vars *v_cast)
+{
+
+	v_cast->hit = 0; //was there a wall hit?
+	if (v_cast->rc.raydir.x < 0)
+	{
+		v_cast->rc.step.x = -1;
+		v_cast->rc.sidedist.x = (v_cast->rc.pos.x - v_cast->rc.map.x) * v_cast->rc.deltadist.x;
+	}
+	else
+	{
+		v_cast->rc.step.x = 1;
+		v_cast->rc.sidedist.x = (v_cast->rc.map.x + 1.0 - v_cast->rc.pos.x) * v_cast->rc.deltadist.x;
+	}
+	if (v_cast->rc.raydir.y < 0)
+	{
+		v_cast->rc.step.y = -1;
+		v_cast->rc.sidedist.y = (v_cast->rc.pos.y - v_cast->rc.map.y) * v_cast->rc.deltadist.y;
+	}
+	else
+	{
+		v_cast->rc.step.y = 1;
+		v_cast->rc.sidedist.y = (v_cast->rc.map.y + 1.0 - v_cast->rc.pos.y) * v_cast->rc.deltadist.y;
+	}			
+}
 
 int calculate(void *vars)
 {
 	t_vars *v_cast = (t_vars *)vars;
+
 
 
 //	UPDATE VARS (chaque tour mlx_loop())
@@ -47,29 +73,8 @@ int calculate(void *vars)
 			else
 				v_cast->rc.deltadist.y = fabs(1.0 / v_cast->rc.raydir.y);
 			double perpWallDist;
-			v_cast->hit = 0; //was there a wall hit?
 
-			if (v_cast->rc.raydir.x < 0)
-			{
-				v_cast->rc.step.x = -1;
-				v_cast->rc.sidedist.x = (v_cast->rc.pos.x - v_cast->rc.map.x) * v_cast->rc.deltadist.x;
-			}
-			else
-			{
-				v_cast->rc.step.x = 1;
-				v_cast->rc.sidedist.x = (v_cast->rc.map.x + 1.0 - v_cast->rc.pos.x) * v_cast->rc.deltadist.x;
-			}
-			if (v_cast->rc.raydir.y < 0)
-			{
-				v_cast->rc.step.y = -1;
-				v_cast->rc.sidedist.y = (v_cast->rc.pos.y - v_cast->rc.map.y) * v_cast->rc.deltadist.y;
-			}
-			else
-			{
-				v_cast->rc.step.y = 1;
-				v_cast->rc.sidedist.y = (v_cast->rc.map.y + 1.0 - v_cast->rc.pos.y) * v_cast->rc.deltadist.y;
-			}
-			
+			calc_side(v_cast);
 			while (v_cast->hit == 0)
 			{
 				//jump to next map square, either in x-direction, or in y-direction
