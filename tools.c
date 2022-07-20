@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:31:25 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/14 19:18:19 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/20 17:47:31 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	exit_game(t_vars *vars)
 {
+	mlx_destroy_image(vars->mlx, vars->tex.img);
 	mlx_destroy_image(vars->mlx, vars->img.img);
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
