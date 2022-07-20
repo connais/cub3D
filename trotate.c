@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:03:07 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/20 17:34:00 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/20 17:40:52 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int main(int argc, char **argv)
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
 	vars.img.img = mlx_new_image(vars.mlx, 1920, 1080);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
-//	mlx_xpm_file_to_image(vars.mlx, "./img_texture/lave.xpm", &vars.width, &vars.height);
+	vars.tex.img = mlx_xpm_file_to_image(vars.mlx, "./img_texture/lave.xpm", &vars.tex.width, &vars.tex.height);
 	mlx_hook(vars.win, 2, 1L << 0, keypress, &vars);
 	mlx_hook(vars.win, 3, 1L<<1, keyrelease, &vars);
 	mlx_hook(vars.win, 17, 1L << 17, close_cross, &vars);

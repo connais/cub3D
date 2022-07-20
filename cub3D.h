@@ -87,6 +87,7 @@ typedef struct s_vars {
 	float		dy;
 	int		plen;
 	t_data	img;
+	t_data	tex;
 	char	**filecub;
 	char	**map;
 	int		**setmap;
