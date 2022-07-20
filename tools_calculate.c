@@ -9,6 +9,7 @@ void	start_calc(t_vars *v_cast, int x)
 			v_cast->rc.map.x = (int)v_cast->rc.pos.x;
 			v_cast->rc.map.y = (int)v_cast->rc.pos.y;
 }
+
 void	calc_dist(t_vars *v_cast)
 {	
 	if (v_cast->rc.raydir.x <= 0.00001 && v_cast->rc.raydir.x >= -0.00001) 

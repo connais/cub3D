@@ -43,6 +43,8 @@ typedef struct	s_rc
     t_posi	map;
 	t_posi	step;
 	double  camplanex;
+	double perpWallDist;
+	int lineHeight;
 }               t_rc;
 
 typedef struct	s_coords
@@ -157,4 +159,5 @@ void	plane_calc(t_vars *vars);
 void	update_rc_vars(t_vars *vars);
 void	start_calc(t_vars *v_cast, int x);
 void	calc_dist(t_vars *v_cast);
+void	calc_text(t_vars *v_cast, int x);
 #endif
