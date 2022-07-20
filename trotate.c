@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:03:07 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/20 17:08:46 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/20 17:14:21 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	reset_image(t_vars *vars)
 {
 	ft_bzero(vars->img.addr, HEIGHT * WIDTH * 4);
 }
+
 void	calc_side(t_vars *v_cast)
 {
 
@@ -41,7 +42,28 @@ void	calc_side(t_vars *v_cast)
 		v_cast->rc.sidedist.y = (v_cast->rc.map.y + 1.0 - v_cast->rc.pos.y) * v_cast->rc.deltadist.y;
 	}			
 }
-
+void	found_hit(t_vars *v_cast)
+{
+	while (v_cast->hit == 0)
+	{
+		//jump to next map square, either in x-direction, or in y-direction
+		if (v_cast->rc.sidedist.x < v_cast->rc.sidedist.y)
+		{
+			v_cast->rc.sidedist.x += v_cast->rc.deltadist.x;
+			v_cast->rc.map.x += v_cast->rc.step.x;
+			v_cast->side = 0;
+		}
+		else
+		{
+			v_cast->rc.sidedist.y += v_cast->rc.deltadist.y;
+			v_cast->rc.map.y += v_cast->rc.step.y;
+			v_cast->side = 1;
+		}
+		//Check if ray has v_cast->hit a wall
+		if (v_cast->final_tab[inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y)] > 0) 
+			v_cast->hit = 1;
+	}
+}
 int calculate(void *vars)
 {
 	t_vars *v_cast = (t_vars *)vars;
@@ -73,27 +95,8 @@ int calculate(void *vars)
 			else
 				v_cast->rc.deltadist.y = fabs(1.0 / v_cast->rc.raydir.y);
 			double perpWallDist;
-
 			calc_side(v_cast);
-			while (v_cast->hit == 0)
-			{
-				//jump to next map square, either in x-direction, or in y-direction
-				if (v_cast->rc.sidedist.x < v_cast->rc.sidedist.y)
-				{
-					v_cast->rc.sidedist.x += v_cast->rc.deltadist.x;
-					v_cast->rc.map.x += v_cast->rc.step.x;
-					v_cast->side = 0;
-				}
-				else
-				{
-					v_cast->rc.sidedist.y += v_cast->rc.deltadist.y;
-					v_cast->rc.map.y += v_cast->rc.step.y;
-					v_cast->side = 1;
-				}
-				//Check if ray has v_cast->hit a wall
-				if (v_cast->final_tab[inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y)] > 0) 
-					v_cast->hit = 1;
-			}
+			found_hit(v_cast);
 			// //printf("\nok\n");
 
 			if(v_cast->side == 0) 
@@ -126,25 +129,7 @@ int calculate(void *vars)
 			// int texX = (int)(wallX * (double)(texWidth));
 			// if(v_cast->side == 0 && v_cast->rc.raydir.x > 0) texX = texWidth - texX - 1;
 			// if(v_cast->side == 1 && v_cast->rc.raydir.y < 0) texX = texWidth - texX - 1;
-			int color;
-			if (inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y) == 1)
-			{
-	//			//printf("enter\n");
-				color = 0x00FF0000; //red
-			}
-			else if (inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y) == 2)  
-				color = 0x0000FF00; //green
-			else if (inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y) == 3) 
-				color = 0x000000FF; //blue
-			else if (inttoint(v_cast, v_cast->rc.map.x, v_cast->rc.map.y) == 4)   
-				color = 0x00FFFFFF; //white
-			else 
-				color = 0x0000FFFF; //yellow
-			if (v_cast->side == 1) 
-				color = color / 2;
-		//	//printf("\n%d\n", x);
 			drawline(x, v_cast->drawStart, v_cast->drawEnd, v_cast);
-//			//printf("ici\n");
     	}
 		mlx_put_image_to_window(v_cast->mlx, v_cast->win, v_cast->img.img, 0, 0);
   return (0);
