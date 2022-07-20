@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:03:07 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/20 17:45:44 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/20 17:52:08 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int calculate(void *vars)
 {
 	t_vars *v_cast = (t_vars *)vars;
 	int x;
-
+	double perpWallDist;
+	int lineHeight;
 	x = -1;
 	update_rc_vars(v_cast);
 	reset_image(vars);
@@ -78,14 +79,13 @@ int calculate(void *vars)
 	{
 		start_calc(v_cast, x);	
 		calc_dist(v_cast);
-		double perpWallDist;
 		calc_side(v_cast);
 		found_hit(v_cast);
 		if(v_cast->side == 0) 
 			perpWallDist = (v_cast->rc.sidedist.x - v_cast->rc.deltadist.x);
 		else
-		perpWallDist = (v_cast->rc.sidedist.y - v_cast->rc.deltadist.y);
-		int lineHeight = (int)(HEIGHT / perpWallDist);
+			perpWallDist = (v_cast->rc.sidedist.y - v_cast->rc.deltadist.y);
+		lineHeight = (int)(HEIGHT / perpWallDist);
 		v_cast->drawStart = -lineHeight / 2 + HEIGHT / 2;
 		v_cast->drawEnd = lineHeight / 2 + HEIGHT / 2;
 		if(v_cast->drawStart < 0)
