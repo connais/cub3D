@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 12:16:13 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/19 19:58:47 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/20 19:04:24 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	draw_wall(int x, int start, int end, t_vars *vars)
 	i = start;
 	while (i < end)
 	{
-		if (vars->side == 1)
+	if (vars->side == 1)
             my_mlx_pixel_put(&vars->img, x, i, 0xFF0000 / 2);
         else
             my_mlx_pixel_put(&vars->img, x, i, 0xFF0000);

@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:03:07 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/20 18:55:55 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/20 19:03:53 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,9 @@ int calculate(void *vars)
 	x = -1;
 	update_rc_vars(v_cast);
 	reset_image(vars);
-	v_cast->side = 0;
-	v_cast->hit = 0;
 	while (++x < WIDTH)
 	{
+		v_cast->hit = 0;
 		start_calc(v_cast, x);	
 		calc_dist(v_cast);
 		calc_side(v_cast);
