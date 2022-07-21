@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:44:09 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/21 18:36:50 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/21 18:39:52 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ int parsing(t_vars *data, char *file)
         perror ("Malloc : ");
     data->filecub = ft_split(str, '\n');
     free(str);
-    str = NULL;
     return (0);
 }
 
