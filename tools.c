@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:31:25 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/20 17:47:31 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/21 15:10:45 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	exit_game(t_vars *vars)
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
+	clean_all(vars);
 	exit(EXIT_SUCCESS);
 }
 int		player(void *vars)

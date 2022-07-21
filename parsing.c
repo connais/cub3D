@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:44:09 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/12 17:42:55 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/21 18:36:50 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,14 @@ int parsing(t_vars *data, char *file)
     free(buffer);
     close(fd);
     l_count = lines_counter(str);
+    data->len_file = lines_counter(str);
     data->filecub = ft_calloc(sizeof(char *), (l_count + 1));
+    printf("lcount %d\n", l_count);
     if (!data->filecub)
         perror ("Malloc : ");
     data->filecub = ft_split(str, '\n');
+    free(str);
+    str = NULL;
     return (0);
 }
 

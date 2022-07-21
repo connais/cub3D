@@ -45,6 +45,10 @@ typedef struct	s_rc
 	double  camplanex;
 	double perpWallDist;
 	int lineHeight;
+	double 	wallX;
+	int 	texX;
+	double 	stage;
+	double 	texPos;
 }               t_rc;
 
 typedef struct	s_coords
@@ -94,6 +98,7 @@ typedef struct s_vars {
 	char	**map;
 	int		**setmap;
 	int		*final_tab;
+	int		len_file;
 	int		size_tab;
 	int		line_map;
     float	pdx;
@@ -114,6 +119,7 @@ typedef struct s_vars {
 	int side;
 }		t_vars;
 
+int calculate(void *vars);
 int	found_player(t_vars *vars);
 void	draw_player(t_vars *v_carst);
 float make_b(t_vars vars);
@@ -160,4 +166,13 @@ void	update_rc_vars(t_vars *vars);
 void	start_calc(t_vars *v_cast, int x);
 void	calc_dist(t_vars *v_cast);
 void	calc_text(t_vars *v_cast, int x);
+void	calc_side(t_vars *v_cast);
+void	found_hit(t_vars *v_cast);
+void	clean_all(t_vars *vars);
+void 	clean_double_char(char **tab);
+void 	sp_clean_double_char(char **tab, int len);
+void 	where_draw(t_vars *v_cast);
+void	which_walldist(t_vars *v_cast, double *perpWallDist);
+void 	clean_double_int(int **tab, int line_map);
+
 #endif

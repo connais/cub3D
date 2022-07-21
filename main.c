@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:11:41 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/14 16:27:53 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/21 14:19:08 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,33 @@ int	key_hook(int keycode, t_vars *vars)
 // 	px -= pdx;
 // 	py -= pdy;
 	return (0);
+}
+
+int main(int argc, char **argv)
+{
+	t_vars	vars;
+    
+	if (argc != 2)
+        return (1);
+    if (parsing(&vars, argv[1]) != 0)
+		return (1);
+	init_vars(&vars);
+	vars.map = save_map(vars.filecub);
+	vars.setmap = set_map(vars.filecub);
+	vars.line_map = line_map(vars.filecub);
+	vars.final_tab = final_tab(&vars);
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
+	vars.img.img = mlx_new_image(vars.mlx, 1920, 1080);
+	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
+	vars.tex.img = mlx_xpm_file_to_image(vars.mlx, "./img_texture/lave.xpm", &vars.tex.width, &vars.tex.height);
+	vars.tex.addr = mlx_get_data_addr(vars.tex.img, &vars.tex.bits_per_pixel, &vars.tex.line_length, &vars.tex.endian);
+	mlx_hook(vars.win, 2, 1L << 0, keypress, &vars);
+	mlx_hook(vars.win, 3, 1L<<1, keyrelease, &vars);
+	mlx_hook(vars.win, 17, 1L << 17, close_cross, &vars);
+//	mlx_key_hook(vars.win, keyk_hook, &vars);
+	mlx_loop_hook(vars.mlx, calculate, (void *)&vars);
+	mlx_loop(vars.mlx);
 }
 
 // #define COLUMN_SIZE x
