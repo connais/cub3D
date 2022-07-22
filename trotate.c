@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:03:07 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/21 18:46:15 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/22 12:03:44 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int calculate(void *vars)
 		v_cast->drawEnd = v_cast->rc.lineHeight / 2 + HEIGHT / 2;
 		where_draw(v_cast);
 		drawline(x, v_cast->drawStart, v_cast->drawEnd, v_cast);
-		//calc_text(v_cast, x);
+		calc_text(v_cast, x);
     	}
 	mlx_put_image_to_window(v_cast->mlx, v_cast->win, v_cast->img.img, 0, 0);
 	return (0);
