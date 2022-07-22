@@ -173,6 +173,7 @@ void 	clean_double_char(char **tab);
 void 	sp_clean_double_char(char **tab, int len);
 void 	where_draw(t_vars *v_cast);
 void	which_walldist(t_vars *v_cast, double *perpWallDist);
+void	print_text(t_vars *v_cast, int x);
 void 	clean_double_int(int **tab, int line_map);
 
 #endif

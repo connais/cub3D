@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 15:57:11 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/22 11:59:15 by avaures          ###   ########.fr       */
+/*   Updated: 2022/07/22 12:11:20 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,13 @@ void	calc_wallhit(t_vars *v_cast)
 		v_cast->rc.wallX = v_cast->rc.pos.x + v_cast->rc.perpWallDist * v_cast->rc.raydir.x;
 	v_cast->rc.wallX -= floor((v_cast->rc.wallX));
 }
-void	calc_text(t_vars *v_cast, int x)
-{
-    int 	y;
+void	print_text(t_vars *v_cast, int x)
+{	
+	int 	y;
     int		lineHeight;
-//	t_rc	rc;		
 	
 	lineHeight = v_cast->rc.lineHeight;
-	calc_wallhit(v_cast);
-	calc_texx(v_cast);
-    v_cast->rc.stage = (double)v_cast->tex.height / (double)v_cast->rc.lineHeight;
+	v_cast->rc.stage = (double)v_cast->tex.height / (double)v_cast->rc.lineHeight;
 	v_cast->rc.texPos = ((double)lineHeight - (double)HEIGHT) / 2.0 * v_cast->rc.stage;
     v_cast->rc.texPos *= (v_cast->rc.texPos > 0);
 	y = v_cast->drawStart;
@@ -57,4 +54,10 @@ void	calc_text(t_vars *v_cast, int x)
 		my_mlx_pixel_put(&v_cast->img, x, y, get_color(&v_cast->tex, v_cast->rc.texX, (int)v_cast->rc.texPos));
 		y++;
 	}
+}
+void	calc_text(t_vars *v_cast, int x)
+{
+	calc_wallhit(v_cast);
+	calc_texx(v_cast);
+    print_text(v_cast, x);
 }
