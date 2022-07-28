@@ -1,281 +1,284 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 4.2.1
+# GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 22 11:41:11 2022
+# Make data base, printed on Wed Jul 27 17:43:15 2022
 
 # Variables
 
-# automatic
-<D = $(patsubst %/,%,$(dir $<))
-# automatic
-?F = $(notdir $?)
-# environment
-DESKTOP_SESSION = ubuntu
-# default
-.SHELLFLAGS := -c
 # makefile (from 'Makefile', line 9)
 OBJ = $(SRC:%.c=./.build/%.o)
 # environment
-XDG_SESSION_CLASS = user
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
 # makefile (from 'Makefile', line 1)
 SRC = main.c tools.c parsing.c GNL.c GNL_utils.c take_map.c tools_map.c draw_map.c final_tab.c print_vecteur.c bresenham.c movement.c trotate.c draw_img.c move_player.c more_move_player.c texture.c tools_calculate.c clean.c
 # environment
-XDG_SESSION_TYPE = x11
+SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
-VSCODE_LOG_NATIVE = false
-# automatic
-?D = $(patsubst %/,%,$(dir $?))
-# automatic
-@D = $(patsubst %/,%,$(dir $@))
+TERMINATOR_DBUS_NAME = net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
 # environment
-XAUTHORITY = /mnt/nfs/homes/avaures/.Xauthority
+GJS_DEBUG_OUTPUT = stderr
 # environment
-GDMSESSION = ubuntu
-# environment
-XMODIFIERS = @im=ibus
-# makefile
-CURDIR := /mnt/nfs/homes/avaures/Documents/cub3D
-# makefile
-SHELL = /bin/sh
-# makefile (from 'Makefile', line 13)
-RM = rm -rf
-# makefile (from 'Makefile', line 23)
-B_RED = \033[1;31m
-# environment
-VTE_VERSION = 6003
-# environment
-VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
-# environment
-_ = /usr/bin/code
-# makefile (from 'Makefile', line 17)
-CFLAGS = -Wall -Wextra -Werror
-# environment
-JOURNAL_STREAM = 9:56684
-# environment
-XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
-# automatic
-@F = $(notdir $@)
-# environment
-GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/terminator.desktop
-# 'override' directive
-GNUMAKEFLAGS := 
+VSCODE_IPC_HOOK_EXTHOST = /run/user/40289/vscode-ipc-90963723-b35c-4ed9-a18e-a9e705b8784e.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
-XDG_DATA_DIRS = /usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/avaures/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
-# environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/40289/bus
-# environment
-VSCODE_VERBOSE_LOGGING = true
-# environment
-MANAGERPID = 3609
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/40289/vscode-ipc-1f5ea792-e084-4cac-b6ab-91553887bd4d.sock
-# environment
 VSCODE_CWD = /mnt/nfs/homes/avaures/Documents/cub3D
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+TERMINATOR_UUID = urn:uuid:01720c2a-5590-4ddc-9325-13bc7f0deba1
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_40289_YSIw3G
+LIBVIRT_DEFAULT_URI = qemu:///system
 # default
-MAKE_HOST := x86_64-pc-linux-gnu
+MAKE_COMMAND := make
 # environment
-PATH = /mnt/nfs/homes/avaures/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+QT_ACCESSIBILITY = 1
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
 # environment
-GPG_AGENT_INFO = /run/user/40289/gnupg/S.gpg-agent:0:1
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /mnt/nfs/homes/avaures/Documents/cub3D
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/e1r6p18.clusters.42paris.fr:@/tmp/.ICE-unix/4463,unix/e1r6p18.clusters.42paris.fr:/tmp/.ICE-unix/4463
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/share/gnome:/mnt/nfs/homes/avaures/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
 # environment
-XDG_RUNTIME_DIR = /run/user/40289
-# environment
-XDG_MENU_PREFIX = gnome-
+OLDPWD = /mnt/nfs/homes/avaures
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
 # environment
 VSCODE_LOG_STACK = false
-# environment
-ELECTRON_RUN_AS_NODE = 1
-# environment
-INVOCATION_ID = b0e784c6cfc94f849ac7a89bf23243a6
-# default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
-# environment
-XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/avaures
-# environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
-# environment
-XDG_SESSION_DESKTOP = ubuntu
-# environment
-SSH_AUTH_SOCK = /run/user/40289/keyring/ssh
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 4905
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = :0
+VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/avaures/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session58
+# environment
+LANG = C
+# environment
+XAUTHORITY = /mnt/nfs/homes/avaures/.Xauthority
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# environment
+TERMINATOR_DBUS_PATH = /net/tenshu/Terminator2
+# makefile
+CURDIR := /mnt/nfs/homes/avaures/Documents/cub3D
+# environment
+VSCODE_PIPE_LOGGING = true
+# makefile (from 'Makefile', line 15)
+LIBC = ar -rc
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_AUTH_SOCK = /run/user/40289/keyring/ssh
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+ZSH = /mnt/nfs/homes/avaures/.oh-my-zsh
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 2177600
+# makefile (from 'Makefile', line 26)
+B_CYAN = \033[1;36m
+# environment
+KRB5CCNAME = FILE:/tmp/krb5cc_40289_Og3nce
+# environment
+XDG_SESSION_TYPE = x11
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+SESSION_MANAGER = local/e1r2p7.clusters.42paris.fr:@/tmp/.ICE-unix/2175167,unix/e1r2p7.clusters.42paris.fr:/tmp/.ICE-unix/2175167
+# automatic
+*F = $(notdir $*)
+# environment
+IBUS_DISABLE_SNOOPER = 1
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/40289/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# makefile
+SHELL = /bin/sh
+# default
+MAKECMDGOALS := all
+# environment
+XMODIFIERS = @im=ibus
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
+SHLVL = 2
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /mnt/nfs/homes/avaures/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# makefile (from 'Makefile', line 24)
+B_GREEN = \033[1;32m
+# default
+MAKEFILES := 
+# automatic
+^F = $(notdir $^)
+# makefile (from 'Makefile', line 7)
+HEADER = cub3D.h
+# makefile (from 'Makefile', line 18)
+MLX_FLAGS = -g -L ./minilibx-linux -lmlx -lXext -lX11 -lm
 # makefile (from 'Makefile', line 25)
 B_MAGENTA = \033[1;35m
 # environment
-VSCODE_PIPE_LOGGING = true
+INVOCATION_ID = a74413f83cdb4d8caed4858ee26541ec
+# makefile (from 'Makefile', line 22)
+CL_LINE = \033[2K
 # environment
-PWD = /mnt/nfs/homes/avaures/Documents/cub3D
-# default
-.LOADED := 
+VSCODE_LOG_NATIVE = false
 # environment
-SSH_AGENT_PID = 4426
+DOCKER_HOST = unix:///run/user/40289/docker.sock
+# automatic
+?F = $(notdir $?)
+# makefile (from 'Makefile', line 11)
+NAME = cub3D
+# makefile (from 'Makefile', line 23)
+B_RED = \033[1;31m
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# automatic
++F = $(notdir $+)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+LESS = -R
+# environment
+DESKTOP_SESSION = ubuntu
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = avaures
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/terminator.desktop
+# makefile
+.DEFAULT_GOAL := all
+# environment
+SYSTEMD_EXEC_PID = 2175190
+# makefile (from 'Makefile', line 13)
+RM = rm -rf
+# environment
+DISPLAY = :0
+# environment
+USER = avaures
 # environment
 GTK_MODULES = gail:atk-bridge
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
+# default
+MAKE_VERSION := 4.3
+# environment
+MANAGERPID = 2174819
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2175717
+# environment
+PAGER = less
+# environment
+_ = /usr/bin/code
+# environment
+XDG_RUNTIME_DIR = /run/user/40289
+# makefile (from 'Makefile', line 17)
+CFLAGS = -Wall -Wextra -Werror
+# makefile (from 'Makefile', line 21)
+NONE = \033[0m
+# environment
+GPG_AGENT_INFO = /run/user/40289/gnupg/S.gpg-agent:0:1
+# environment
+COLORTERM = truecolor
+# environment
+JOURNAL_STREAM = 8:6464733
+# environment
+XDG_SESSION_CLASS = user
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /mnt/nfs/homes/avaures
-# makefile (from 'Makefile', line 26)
-B_CYAN = \033[1;36m
-# environment
-VSCODE_CLI = 1
-# environment
-VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/avaures/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
-# environment
-LOGNAME = avaures
-# environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# environment
-ZSH = /mnt/nfs/homes/avaures/.oh-my-zsh
-# environment
-VSCODE_HANDLES_UNCAUGHT_ERRORS = true
-# environment
-GNOME_DESKTOP_SESSION_ID = this-is-deprecated
-# automatic
-^D = $(patsubst %/,%,$(dir $^))
-# environment
-MAKELEVEL := 0
-# environment
-COLORTERM = truecolor
-# default
-MAKE = $(MAKE_COMMAND)
-# default
-MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # environment
-SHLVL = 2
-# makefile (from 'Makefile', line 5)
-CC = gcc
-# environment
-IM_CONFIG_PHASE = 1
-# default
-MAKE_VERSION := 4.2.1
-# environment
-USER = avaures
-# makefile
-.DEFAULT_GOAL := all
-# environment
-XDG_CURRENT_DESKTOP = Unity
-# environment
-LIBVIRT_DEFAULT_URI = qemu:///system
-# environment
-LESS = -R
-# automatic
-%D = $(patsubst %/,%,$(dir $%))
-# default
-MAKE_COMMAND := make
-# environment
-OLDPWD = /mnt/nfs/homes/avaures
-# environment
-TERMINATOR_DBUS_PATH = /net/tenshu/Terminator2
-# default
-.VARIABLES := 
-# automatic
-*F = $(notdir $*)
-# environment
-XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
-# makefile (from 'Makefile', line 21)
-NONE = \033[0m
+ELECTRON_RUN_AS_NODE = 1
 # environment
 VSCODE_IPC_HOOK = /run/user/40289/vscode-8f724af1-1.68.1-main.sock
-# makefile
-MAKEFLAGS = pqrR
 # environment
-MFLAGS = -pqrR
-# automatic
-*D = $(patsubst %/,%,$(dir $*))
-# automatic
-+D = $(patsubst %/,%,$(dir $+))
-# environment
-GDK_BACKEND = x11
-# makefile (from 'Makefile', line 22)
-CL_LINE = \033[2K
-# automatic
-+F = $(notdir $+)
-# environment
-QT_ACCESSIBILITY = 1
-# environment
-DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
+TERM = xterm-256color
 # default
-MAKEFILES := 
+.RECIPEPREFIX := 
 # automatic
 <F = $(notdir $<)
-# makefile (from 'Makefile', line 18)
-MLX_FLAGS = -g -L ./minilibx-linux -lmlx -lXext -lX11 -lm
-# environment
-PAGER = less
-# environment
-LC_ALL = C
-# makefile (from 'Makefile', line 15)
-LIBC = ar -rc
-# makefile (from 'Makefile', line 7)
-HEADER = cub3D.h
-# environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# automatic
-^F = $(notdir $^)
 # default
 SUFFIXES := 
 # environment
-CHROME_DESKTOP = code-url-handler.desktop
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+VTE_VERSION = 6800
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/avaures
 # default
-.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 5)
+CC = gcc
 # environment
-GJS_DEBUG_OUTPUT = stderr
-# makefile (from 'Makefile', line 11)
-NAME = cub3D
-# default
-.RECIPEPREFIX := 
-# makefile (from 'Makefile', line 24)
-B_GREEN = \033[1;32m
+XDG_MENU_PREFIX = gnome-
 # environment
-LANG = C
-# environment
-TERM = xterm-256color
-# environment
-TERMINATOR_DBUS_NAME = net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
-# environment
-DOCKER_HOST = unix:///run/user/40289/docker.sock
-# environment
-VSCODE_PID = 7166
-# environment
-TERMINATOR_UUID = urn:uuid:e62953b2-4046-49ba-9314-21e289f93b80
+GDMSESSION = ubuntu
 # variable set hash-table stats:
-# Load=128/1024=12%, Rehash=0, Collisions=24/160=15%
+# Load=129/1024=13%, Rehash=0, Collisions=12/166=7%
 
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
 
 # Directories
+ 
 
-# . (device 59, inode 308183158): 36 files, no impossibilities.
+# . (device 58, inode 308183158): 36 files, no impossibilities.
 
 # 36 files, no impossibilities in 1 directories.
 
@@ -284,96 +287,25 @@ TERMINATOR_UUID = urn:uuid:e62953b2-4046-49ba-9314-21e289f93b80
 .build/%.o: %.c
 #  recipe to execute (from 'Makefile', line 29):
 	@$(CC) ${CFLAGS} -o $@ -c $?
- 
 	@printf "${B_MAGENTA}Compilling $? ...\n${NONE}"
 
 # 1 implicit rules, 0 (0.0%) terminal.
-
 # Files
 
 # Not a target:
-.build/GNL_utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-all:
-#  Command line target.
-#  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := all
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := 
-# automatic
-# | := 
-# automatic
-# < := 
-# automatic
-# ^ := 
-# automatic
-# ? := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/12=8%
-#  recipe to execute (from 'Makefile', line 33):
-	@mkdir -p .build
-	cd minilibx-linux && make --no-print-directory
-	@make ${NAME} --no-print-directory
-
-# Not a target:
-.build/tools.o:
+.build/print_vecteur.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-.build/draw_img.o:
+.build/draw_map.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-.build/more_move_player.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-.build/move_player.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-.build/take_map.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-cub3D: .build/main.o .build/tools.o .build/parsing.o .build/GNL.o .build/GNL_utils.o .build/take_map.o .build/tools_map.o .build/draw_map.o .build/final_tab.o .build/print_vecteur.o .build/bresenham.o .build/movement.o .build/trotate.o .build/draw_img.o .build/move_player.o .build/more_move_player.o .build/texture.o .build/tools_calculate.o .build/clean.o
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 39):
-	@cd Libft && make --no-print-directory
-	${CC} -o ${NAME} ${OBJ} ${MLX_FLAGS} ./Libft/libft.a
-	@printf "${B_GREEN}==>{${NAME}} LINKED SUCCESFULLY<==${NONE}\n"
-
-# Not a target:
-.build/main.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-.SUFFIXES:
+.build/final_tab.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -392,7 +324,7 @@ Makefile:
 #  File has not been updated.
 
 # Not a target:
-.build/draw_map.o:
+.build/tools.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -404,52 +336,7 @@ Makefile:
 #  File has not been updated.
 
 # Not a target:
-.build/tools_calculate.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-.build/GNL.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 .build/tools_map.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-fclean: clean
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 49):
-	@${RM} ${NAME}
-	@cd Libft && make clean --no-print-directory
-	@printf "${B_RED}XX{${NAME}} FCLEAN SUCCESFULL XX${NONE}\n"
-	@make clean -C minilibx-linux --no-print-directory
-
-# Not a target:
-.build/clean.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-.DEFAULT:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-re: fclean all
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-.build/texture.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -463,6 +350,81 @@ clean:
 	@${RM} .build
 	@printf "${B_RED}XX{${NAME}} CLEANED SUCCESFULLY XX${NONE}\n"
 
+re: fclean all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.build/take_map.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.build/texture.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all:
+#  Command line target.
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := all
+# automatic
+# * := 
+# automatic
+# < := 
+# automatic
+# + := 
+# automatic
+# % := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/12=8%
+#  recipe to execute (from 'Makefile', line 33):
+	@mkdir -p .build
+	cd minilibx-linux && make --no-print-directory
+	@make ${NAME} --no-print-directory
+
+fclean: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 49):
+	@${RM} ${NAME}
+	@cd Libft && make clean --no-print-directory
+	@printf "${B_RED}XX{${NAME}} FCLEAN SUCCESFULL XX${NONE}\n"
+	@make clean -C minilibx-linux --no-print-directory
+
+# Not a target:
+.build/move_player.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.build/GNL_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # Not a target:
 .build/bresenham.o:
 #  Implicit rule search has not been done.
@@ -470,19 +432,58 @@ clean:
 #  File has not been updated.
 
 # Not a target:
-.build/final_tab.o:
+.build/draw_img.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.build/tools_calculate.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.build/clean.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+cub3D: .build/main.o .build/tools.o .build/parsing.o .build/GNL.o .build/GNL_utils.o .build/take_map.o .build/tools_map.o .build/draw_map.o .build/final_tab.o .build/print_vecteur.o .build/bresenham.o .build/movement.o .build/trotate.o .build/draw_img.o .build/move_player.o .build/more_move_player.o .build/texture.o .build/tools_calculate.o .build/clean.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@cd Libft && make --no-print-directory
+	${CC} -o ${NAME} ${OBJ} ${MLX_FLAGS} ./Libft/libft.a
+	@printf "${B_GREEN}==>{${NAME}} LINKED SUCCESFULLY<==${NONE}\n"
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.build/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.build/more_move_player.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.build/GNL.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 .build/trotate.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-.build/print_vecteur.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -500,7 +501,7 @@ clean:
 
 # strcache performance: lookups = 80 / hit rate = 18%
 # hash-table stats:
-# Load=65/8192=1%, Rehash=0, Collisions=3/80=4%
-# Finished Make data base on Fri Jul 22 11:41:11 2022
+# Load=65/8192=1%, Rehash=0, Collisions=2/80=2%
+# Finished Make data base on Wed Jul 27 17:43:15 2022
 
  
