@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:31:25 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/21 15:10:45 by avaures          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:25:43 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	exit_game(t_vars *vars)
 {
-	mlx_destroy_image(vars->mlx, vars->tex.img);
+	mlx_destroy_image(vars->mlx, vars->NO.img);
 	mlx_destroy_image(vars->mlx, vars->img.img);
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
@@ -50,7 +50,7 @@ int		player(void *vars)
 		&v_cast->img.bits_per_pixel, &v_cast->img.line_length, &v_cast->img.endian);
 		draw_map(v_cast);
 		draw_player(v_cast);
-		bresenham(v_cast, v_cast->px + 5, v_cast->py +5, xl, yl);
+		bresenham(v_cast, v_cast->px + 5, v_cast->py + 5, xl, yl);
 		mlx_put_image_to_window(v_cast->mlx, v_cast->win, v_cast->img.img, 0, 0);
 		startx = v_cast->px;
 		startxl = xl;

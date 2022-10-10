@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 12:16:13 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/21 16:12:19 by avaures          ###   ########.fr       */
+/*   Updated: 2022/10/04 18:02:08 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	drawceiling(int x, int start, int end, t_vars *vars)
 //	printf("\n%d ---> start | %d ---> end\n", start, end);
 	while (i < end)
 	{
-		my_mlx_pixel_put(&vars->img, x, i, CEILINGCOLOR);
+		my_mlx_pixel_put(&vars->img, x, i, vars->CEILINGCOLOR);
 		i++;
 	}
 }
@@ -47,7 +47,7 @@ void	drawfloor(int x, int start, int end, t_vars *vars)
 	i = start;
 	while (i < end)
 	{
-		my_mlx_pixel_put(&vars->img, x, i, FLOORCOLOR);
+		my_mlx_pixel_put(&vars->img, x, i, vars->FLOORCOLOR);
 		i++;
 	}
 }

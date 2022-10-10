@@ -16,9 +16,9 @@
 #define PI		3.14159265359
 #define WIDTH   1920
 #define HEIGHT  1080
-#define STEP	0.15
-#define CEILINGCOLOR	0x2020A9
-#define	FLOORCOLOR		0x20A920
+#define STEP	0.12
+// #define CEILINGCOLOR	0x2020A9
+// #define	FLOORCOLOR		0x20A920
 
 typedef struct  s_posi
 {
@@ -93,7 +93,11 @@ typedef struct s_vars {
 	float		dy;
 	int		plen;
 	t_data	img;
-	t_data	tex;
+	t_data	NO;
+	t_data	SO;
+	t_data	WE;
+	t_data	EA;
+	t_data	wall[4];
 	char	**filecub;
 	char	**map;
 	int		**setmap;
@@ -115,8 +119,11 @@ typedef struct s_vars {
 	int		drawEnd;
 	int		width;
 	int		height;
+	int		witch;
 	int hit;
 	int side;
+	int	CEILINGCOLOR;
+	int	FLOORCOLOR;
 }		t_vars;
 
 int calculate(void *vars);

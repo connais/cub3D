@@ -6,7 +6,7 @@
 /*   By: avaures <avaures@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:11:41 by avaures           #+#    #+#             */
-/*   Updated: 2022/07/21 14:19:08 by avaures          ###   ########.fr       */
+/*   Updated: 2022/10/05 18:36:04 by avaures          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,12 @@ int	key_hook(int keycode, t_vars *vars)
 int main(int argc, char **argv)
 {
 	t_vars	vars;
-    
 	if (argc != 2)
         return (1);
     if (parsing(&vars, argv[1]) != 0)
 		return (1);
+	vars.CEILINGCOLOR = 0x2020A9;
+	vars.FLOORCOLOR = 0x20A920;
 	init_vars(&vars);
 	vars.map = save_map(vars.filecub);
 	vars.setmap = set_map(vars.filecub);
@@ -75,8 +76,18 @@ int main(int argc, char **argv)
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
 	vars.img.img = mlx_new_image(vars.mlx, 1920, 1080);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
-	vars.tex.img = mlx_xpm_file_to_image(vars.mlx, "./img_texture/lave.xpm", &vars.tex.width, &vars.tex.height);
-	vars.tex.addr = mlx_get_data_addr(vars.tex.img, &vars.tex.bits_per_pixel, &vars.tex.line_length, &vars.tex.endian);
+	vars.NO.img = mlx_xpm_file_to_image(vars.mlx, "./img_texture/lave.xpm", &vars.NO.width, &vars.NO.height);
+	vars.NO.addr = mlx_get_data_addr(vars.NO.img, &vars.NO.bits_per_pixel, &vars.NO.line_length, &vars.NO.endian);
+	vars.SO.img = mlx_xpm_file_to_image(vars.mlx, "./img_texture/plane.xpm", &vars.SO.width, &vars.SO.height);
+	vars.SO.addr = mlx_get_data_addr(vars.SO.img, &vars.SO.bits_per_pixel, &vars.SO.line_length, &vars.NO.endian);
+	vars.WE.img = mlx_xpm_file_to_image(vars.mlx, "./img_texture/brick.xpm", &vars.WE.width, &vars.WE.height);
+	vars.WE.addr = mlx_get_data_addr(vars.WE.img, &vars.WE.bits_per_pixel, &vars.WE.line_length, &vars.WE.endian);
+	vars.EA.img = mlx_xpm_file_to_image(vars.mlx, "./img_texture/TNTf.xpm", &vars.EA.width, &vars.EA.height);
+	vars.EA.addr = mlx_get_data_addr(vars.EA.img, &vars.EA.bits_per_pixel, &vars.EA.line_length, &vars.EA.endian);
+	vars.wall[0] = vars.NO; 
+	vars.wall[1] = vars.SO; 
+	vars.wall[2] = vars.EA; 
+	vars.wall[3] = vars.WE; 
 	mlx_hook(vars.win, 2, 1L << 0, keypress, &vars);
 	mlx_hook(vars.win, 3, 1L<<1, keyrelease, &vars);
 	mlx_hook(vars.win, 17, 1L << 17, close_cross, &vars);
